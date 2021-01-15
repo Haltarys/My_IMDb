@@ -1,0 +1,92 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Award {
+  id: ID!
+  title: String!
+}
+
+type Universe {
+  id: ID!
+  name: String!
+  films: [Film!]!
+}
+
+type Character {
+  id: ID!
+  name: String!
+  playedBy: [FilmRole!]!
+}
+
+type FilmRole implements IRole {
+  id: ID!
+  character: Character!
+  voicedBy(singing: Boolean = false, language: String): Person
+  playedBy: Person
+}
+
+interface IRole {
+  id: ID!
+  character: Character!
+  voicedBy(singing: Boolean = false, language: String): Person
+}
+
+type Film implements IMedia {
+  id: ID!
+  title: String!
+  year: Int!
+  genres: [String!]!
+  awards: [Award!]!
+  basedOnTrueFacts: Boolean!
+  basedOnBook: Book
+  directedBy: [Person!]!
+  musicBy: [Person!]!
+  cast: [FilmRole!]!
+  sequel: Film
+  previous: Film
+  cinematicUniverse: Universe
+}
+
+interface IMedia {
+  id: ID!
+  title: String!
+  year: Int!
+  genres: [String!]!
+  awards: [Award!]!
+}
+
+type ActorRole implements IRole {
+  id: ID!
+  character: Character!
+  voicedBy(singing: Boolean = false, language: String): Person
+  film: Film!
+}
+
+type Person {
+  id: ID!
+  name: String!
+  directed: [Film!]!
+  composedFor: [Film!]!
+  playedIn: [ActorRole!]!
+}
+
+type Book implements IMedia {
+  id: ID!
+  title: String!
+  year: Int!
+  genres: [String!]!
+  awards: [Award!]!
+  author: Person
+}
+
+type Query {
+  getAllBooks: [Book!]!
+  getBookByID(id: ID!): Book
+  getAllFilms: [Film!]!
+  getFilmByID(id: ID!): Film
+  getEveryone: [Person!]!
+  getPersonByID(id: ID!): Person
+  getAllUniverses: [Universe!]!
+  getUniverseByID(id: ID!): Universe
+}

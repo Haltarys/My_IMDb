@@ -1,0 +1,19 @@
+import { Parent, ResolveField, Resolver } from '@nestjs/graphql';
+import { IMedia } from './media.type';
+
+@Resolver((of) => IMedia)
+export class IMediaResolver {
+  @ResolveField()
+  genres(@Parent() media) {
+    return [];
+  }
+
+  @ResolveField()
+  awards(@Parent() media) {
+    return [];
+  }
+
+  // id(@Parent() media) {
+  //   return media._id;
+  // }
+}
