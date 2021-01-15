@@ -38,6 +38,7 @@ type Film implements IMedia {
   year: Int!
   genres: [String!]!
   awards: [Award!]!
+  runningTime: Int!
   basedOnTrueFacts: Boolean!
   basedOnBook: Book
   directedBy: [Person!]!

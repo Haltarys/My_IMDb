@@ -1,4 +1,4 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { IMedia } from '../media.type';
 import { Book } from '../book/book.type';
 import { Award } from 'src/graphql/award/award.type';
@@ -22,6 +22,9 @@ export class Film implements IMedia {
   genres: string[];
 
   awards: Award[];
+
+  @Field((type) => Int)
+  runningTime: number;
 
   @Field()
   basedOnTrueFacts: boolean;
