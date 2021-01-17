@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MyImdbModule } from './graphql/my-imdb.module';
 import { join } from 'path';
@@ -14,6 +13,5 @@ import { join } from 'path';
     MyImdbModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
