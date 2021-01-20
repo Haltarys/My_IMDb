@@ -16,30 +16,37 @@ export class FilmResolver {
     return false;
   }
 
+  @ResolveField()
   basedOnBook(@Parent() film) {
     return null;
   }
 
+  @ResolveField()
   directedBy(@Parent() film) {
     return [];
   }
 
+  @ResolveField()
   musicBy(@Parent() film) {
     return [];
   }
 
+  @ResolveField()
   cast(@Parent() film) {
     return [];
   }
 
+  @ResolveField()
   sequel(@Parent() film) {
     return null;
   }
 
+  @ResolveField()
   previous(@Parent() film) {
     return null;
   }
 
+  @ResolveField()
   cinematicUniverse(@Parent() film) {
     return null;
   }
