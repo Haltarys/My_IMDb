@@ -12,8 +12,4 @@ export class IMediaResolver {
   awards(@Parent() media) {
     return [];
   }
-
-  // id(@Parent() media) {
-  //   return media._id;
-  // }
 }
