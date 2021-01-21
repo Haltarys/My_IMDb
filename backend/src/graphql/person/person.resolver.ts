@@ -21,6 +21,11 @@ export class PersonResolver {
     return [];
   }
 
+  @ResolveField()
+  playedIn(@Parent() person) {
+    return [];
+  }
+
   @Query((returns) => [Person])
   getEveryone() {
     return [];
