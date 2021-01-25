@@ -37,12 +37,12 @@ export class FilmResolver {
   }
 
   @ResolveField()
-  sequel(@Parent() film) {
+  previous(@Parent() film) {
     return null;
   }
 
   @ResolveField()
-  previous(@Parent() film) {
+  sequel(@Parent() film) {
     return null;
   }
 

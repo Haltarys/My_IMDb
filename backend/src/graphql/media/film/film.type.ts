@@ -42,10 +42,10 @@ export class Film implements IMedia {
   cast: FilmRole[];
 
   @Field((type) => Film, { nullable: true })
-  sequel?: Film;
+  previous?: Film;
 
   @Field((type) => Film, { nullable: true })
-  previous?: Film;
+  sequel?: Film;
 
   @Field((type) => Universe, { nullable: true })
   cinematicUniverse?: Universe;

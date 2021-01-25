@@ -44,8 +44,8 @@ type Film implements IMedia {
   directedBy: [Person!]!
   musicBy: [Person!]!
   cast: [FilmRole!]!
-  sequel: Film
   previous: Film
+  sequel: Film
   cinematicUniverse: Universe
 }
 
