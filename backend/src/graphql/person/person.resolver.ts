@@ -26,6 +26,11 @@ export class PersonResolver {
     return [];
   }
 
+  @ResolveField()
+  booksWritten(@Parent() person) {
+    return [];
+  }
+
   @Query((returns) => [Person])
   getEveryone() {
     return [];

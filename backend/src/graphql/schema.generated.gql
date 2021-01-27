@@ -70,6 +70,7 @@ type Person {
   directed: [Film!]!
   composedFor: [Film!]!
   playedIn: [ActorRole!]!
+  booksWritten: [Book!]!
 }
 
 type Book implements IMedia {
