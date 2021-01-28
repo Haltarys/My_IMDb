@@ -1,5 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { FilmRole } from '../role/film-role/film-role.type';
+import { Role } from '../role/role.type';
 import { IDType } from '../id-type';
 
 @ObjectType()
@@ -10,6 +10,6 @@ export class Character {
   @Field()
   name: string;
 
-  @Field((type) => [FilmRole])
-  playedBy: FilmRole[];
+  @Field((type) => [Role])
+  playedBy: Role[];
 }

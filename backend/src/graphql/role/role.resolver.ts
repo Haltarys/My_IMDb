@@ -1,10 +1,20 @@
 import { Args, Parent, ResolveField, Resolver } from '@nestjs/graphql';
-import { IRole } from './role.type';
+import { Role } from './role.type';
 
-@Resolver((of) => IRole)
-export class IRoleResolver {
+@Resolver((of) => Role)
+export class RoleResolver {
+  @ResolveField()
+  film(@Parent() role) {
+    return null;
+  }
+
   @ResolveField()
   character(@Parent() role) {
+    return null;
+  }
+
+  @ResolveField()
+  playedBy(@Parent() role) {
     return null;
   }
 

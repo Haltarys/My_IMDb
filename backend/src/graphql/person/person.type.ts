@@ -1,6 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { Film } from '../media/film/film.type';
-import { ActorRole } from '../role/actor-role/actor-role.type';
+import { Role } from '../role/role.type';
 import { Book } from '../media/book/book.type';
 import { IDType } from '../id-type';
 
@@ -18,8 +18,8 @@ export class Person {
   @Field((type) => [Film])
   composedFor: Film[];
 
-  @Field((type) => [ActorRole])
-  playedIn: ActorRole[];
+  @Field((type) => [Role])
+  playedIn: Role[];
 
   @Field((type) => [Book])
   booksWritten: Book[];

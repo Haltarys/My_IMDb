@@ -16,19 +16,14 @@ type Universe {
 type Character {
   id: ID!
   name: String!
-  playedBy: [FilmRole!]!
+  playedBy: [Role!]!
 }
 
-type FilmRole implements IRole {
+type Role {
   id: ID!
+  film: Film!
   character: Character!
-  voicedBy(singing: Boolean = false, language: String): Person
   playedBy: Person
-}
-
-interface IRole {
-  id: ID!
-  character: Character!
   voicedBy(singing: Boolean = false, language: String): Person
 }
 
@@ -43,7 +38,7 @@ type Film implements IMedia {
   basedOnBook: Book
   directedBy: [Person!]!
   musicBy: [Person!]!
-  cast: [FilmRole!]!
+  cast: [Role!]!
   previous: Film
   sequel: Film
   cinematicUniverse: Universe
@@ -57,19 +52,12 @@ interface IMedia {
   awards: [Award!]!
 }
 
-type ActorRole implements IRole {
-  id: ID!
-  character: Character!
-  voicedBy(singing: Boolean = false, language: String): Person
-  film: Film!
-}
-
 type Person {
   id: ID!
   name: String!
   directed: [Film!]!
   composedFor: [Film!]!
-  playedIn: [ActorRole!]!
+  playedIn: [Role!]!
   booksWritten: [Book!]!
 }
 

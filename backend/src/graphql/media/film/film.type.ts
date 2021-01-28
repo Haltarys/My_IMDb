@@ -4,7 +4,7 @@ import { Book } from '../book/book.type';
 import { Award } from 'src/graphql/award/award.type';
 import { Person } from 'src/graphql/person/person.type';
 import { Universe } from 'src/graphql/universe/universe.type';
-import { FilmRole } from 'src/graphql/role/film-role/film-role.type';
+import { Role } from 'src/graphql/role/role.type';
 import { IDType } from 'src/graphql/id-type';
 
 @ObjectType({
@@ -38,8 +38,8 @@ export class Film implements IMedia {
   @Field((type) => [Person])
   musicBy: Person[];
 
-  @Field((type) => [FilmRole])
-  cast: FilmRole[];
+  @Field((type) => [Role])
+  cast: Role[];
 
   @Field((type) => Film, { nullable: true })
   previous?: Film;
