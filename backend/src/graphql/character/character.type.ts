@@ -11,5 +11,5 @@ export class Character {
   name: string;
 
   @Field((type) => [Role])
-  playedBy: Role[];
+  featuredIn: Role[];
 }

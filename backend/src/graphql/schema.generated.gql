@@ -16,7 +16,7 @@ type Universe {
 type Character {
   id: ID!
   name: String!
-  playedBy: [Role!]!
+  featuredIn: [Role!]!
 }
 
 type Role {

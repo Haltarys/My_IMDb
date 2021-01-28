@@ -12,7 +12,7 @@ import { IDType } from '../id-type';
 @Resolver((of) => Character)
 export class CharacterResolver {
   @ResolveField()
-  playedBy(@Parent() character) {
+  featuredIn(@Parent() character) {
     return [];
   }
 
