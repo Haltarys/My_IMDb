@@ -7,9 +7,4 @@ export class IMediaResolver {
   genres(@Parent() media) {
     return [];
   }
-
-  @ResolveField()
-  awards(@Parent() media) {
-    return [];
-  }
 }

@@ -1,7 +1,6 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { IMedia } from '../media.type';
 import { Book } from '../book/book.type';
-import { Award } from 'src/graphql/award/award.type';
 import { Person } from 'src/graphql/person/person.type';
 import { Universe } from 'src/graphql/universe/universe.type';
 import { Role } from 'src/graphql/role/role.type';
@@ -20,8 +19,6 @@ export class Film implements IMedia {
   year: number;
 
   genres: string[];
-
-  awards: Award[];
 
   @Field((type) => Int)
   runningTime: number;

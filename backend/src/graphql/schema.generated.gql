@@ -2,11 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Award {
-  id: ID!
-  title: String!
-}
-
 type Universe {
   id: ID!
   name: String!
@@ -32,7 +27,6 @@ type Film implements IMedia {
   title: String!
   year: Int!
   genres: [String!]!
-  awards: [Award!]!
   runningTime: Int!
   basedOnTrueFacts: Boolean!
   basedOnBook: Book
@@ -49,7 +43,6 @@ interface IMedia {
   title: String!
   year: Int!
   genres: [String!]!
-  awards: [Award!]!
 }
 
 type Person {
@@ -66,7 +59,6 @@ type Book implements IMedia {
   title: String!
   year: Int!
   genres: [String!]!
-  awards: [Award!]!
   author: Person
 }
 
