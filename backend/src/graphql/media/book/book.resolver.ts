@@ -13,4 +13,9 @@ export class BookResolver {
   getBookByID(@Args('id', { type: () => ID }) id: IDType) {
     return null;
   }
+
+  @Query((returns) => [Book], { nullable: 'items' })
+  getBooksWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
+    return [];
+  }
 }

@@ -40,4 +40,9 @@ export class PersonResolver {
   getPersonByID(@Args('id', { type: () => ID }) id: IDType) {
     return null;
   }
+
+  @Query((returns) => [Person], { nullable: 'items' })
+  getPeopleWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
+    return [];
+  }
 }

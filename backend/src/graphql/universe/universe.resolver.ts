@@ -25,4 +25,9 @@ export class UniverseResolver {
   getUniverseByID(@Args('id', { type: () => ID }) id: IDType) {
     return null;
   }
+
+  @Query((returns) => [Universe], { nullable: 'items' })
+  getUniversesWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
+    return [];
+  }
 }
