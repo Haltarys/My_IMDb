@@ -75,6 +75,9 @@ type Query {
   getAllUniverses: [Universe!]!
   getUniverseByID(id: ID!): Universe
   getUniversesWithIDs(ids: [ID!]!): [Universe]!
+  getAllRoles: [Role!]!
+  getRoleByID(id: ID!): Role
+  getRolesWithIDs(ids: [ID!]!): [Role]!
   getAllCharacters: [Character!]!
   getCharacterByID(id: ID!): Character
   getCharactersWithIDs(ids: [ID!]!): [Character]!
