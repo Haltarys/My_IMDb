@@ -15,8 +15,8 @@ export class Role {
   @Field((type) => Character)
   character: Character;
 
-  @Field((type) => Person, { nullable: true })
-  playedBy?: Person;
+  @Field((type) => [Person])
+  playedBy: Person[];
 
   @Field((type) => Person, { nullable: true })
   voicedBy?: Person;

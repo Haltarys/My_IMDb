@@ -15,7 +15,7 @@ export class RoleResolver {
 
   @ResolveField()
   playedBy(@Parent() role) {
-    return null;
+    return [];
   }
 
   @ResolveField()
