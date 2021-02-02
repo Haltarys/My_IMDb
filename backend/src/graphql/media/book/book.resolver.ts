@@ -14,6 +14,11 @@ export class BookResolver {
     return null;
   }
 
+  @Query((returns) => Book, { nullable: true })
+  getBookByTitle(@Args('title') title: string) {
+    return null;
+  }
+
   @Query((returns) => [Book], { nullable: 'items' })
   getBooksWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
     return [];

@@ -41,6 +41,11 @@ export class PersonResolver {
     return null;
   }
 
+  @Query((returns) => Person, { nullable: true })
+  getPersonByName(@Args('name') name: string) {
+    return null;
+  }
+
   @Query((returns) => [Person], { nullable: 'items' })
   getPeopleWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
     return [];

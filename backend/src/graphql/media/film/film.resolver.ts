@@ -61,6 +61,11 @@ export class FilmResolver {
     return null;
   }
 
+  @Query((returns) => Film, { nullable: true })
+  getFilmByTitle(@Args('title') title: string) {
+    return null;
+  }
+
   @Query((returns) => [Film], { nullable: 'items' })
   getFilmsWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
     return [];

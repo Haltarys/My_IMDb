@@ -26,6 +26,11 @@ export class CharacterResolver {
     return null;
   }
 
+  @Query((returns) => Character, { nullable: true })
+  getCharacterByName(@Args('name') name: string) {
+    return null;
+  }
+
   @Query((returns) => [Character], { nullable: 'items' })
   getCharactersWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
     return [];

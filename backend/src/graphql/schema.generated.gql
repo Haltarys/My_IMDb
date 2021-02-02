@@ -65,20 +65,25 @@ type Book implements IMedia {
 type Query {
   getAllBooks: [Book!]!
   getBookByID(id: ID!): Book
+  getBookByTitle(title: String!): Book
   getBooksWithIDs(ids: [ID!]!): [Book]!
   getAllFilms: [Film!]!
   getFilmByID(id: ID!): Film
+  getFilmByTitle(title: String!): Film
   getFilmsWithIDs(ids: [ID!]!): [Film]!
   getEveryone: [Person!]!
   getPersonByID(id: ID!): Person
+  getPersonByName(name: String!): Person
   getPeopleWithIDs(ids: [ID!]!): [Person]!
   getAllUniverses: [Universe!]!
   getUniverseByID(id: ID!): Universe
+  getUniverseByName(name: String!): Universe
   getUniversesWithIDs(ids: [ID!]!): [Universe]!
   getAllRoles: [Role!]!
   getRoleByID(id: ID!): Role
   getRolesWithIDs(ids: [ID!]!): [Role]!
   getAllCharacters: [Character!]!
   getCharacterByID(id: ID!): Character
+  getCharacterByName(name: String!): Character
   getCharactersWithIDs(ids: [ID!]!): [Character]!
 }
