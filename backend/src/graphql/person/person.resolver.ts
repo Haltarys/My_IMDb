@@ -27,28 +27,28 @@ export class PersonResolver {
   directed(@Parent() person: MongoPerson) {
     const { directed: filmIDs } = person;
 
-    return filmIDs ? this.filmService.findFilmsWithIDs(filmIDs) : [];
+    return this.filmService.findFilmsWithIDs(filmIDs);
   }
 
   @ResolveField()
   composedFor(@Parent() person: MongoPerson) {
     const { composedFor: filmIDs } = person;
 
-    return filmIDs ? this.filmService.findFilmsWithIDs(filmIDs) : [];
+    return this.filmService.findFilmsWithIDs(filmIDs);
   }
 
   @ResolveField()
   playedIn(@Parent() person: MongoPerson) {
     const { playedIn: roleIDs } = person;
 
-    return roleIDs ? this.roleService.findRolesWithIDs(roleIDs) : [];
+    return this.roleService.findRolesWithIDs(roleIDs);
   }
 
   @ResolveField()
   booksWritten(@Parent() person: MongoPerson) {
     const { booksWritten: bookIDs } = person;
 
-    return bookIDs ? this.bookService.findBooksWithIDs(bookIDs) : [];
+    return this.bookService.findBooksWithIDs(bookIDs);
   }
 
   @Query((returns) => [Person])
