@@ -10,6 +10,7 @@ import { Book } from './book.type';
 import { Book as MongoBook } from './book.schema';
 import { BookService } from './book.service';
 import { PersonService } from 'src/graphql/person/person.service';
+import { FilmService } from '../film/film.service';
 import { IDType } from 'src/graphql/id-type';
 
 @Resolver((of) => Book)
@@ -17,6 +18,7 @@ export class BookResolver {
   constructor(
     private bookService: BookService,
     private personService: PersonService,
+    private filmService: FilmService,
   ) {}
 
   @ResolveField()
@@ -24,6 +26,13 @@ export class BookResolver {
     const { author: authorID } = book;
 
     return authorID ? this.personService.findPersonByID(authorID) : null;
+  }
+
+  @ResolveField()
+  adaptations(@Parent() book: MongoBook) {
+    const { adaptations: filmIDs } = book;
+
+    return this.filmService.findFilmsWithIDs(filmIDs);
   }
 
   @Query((returns) => [Book])

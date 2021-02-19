@@ -24,6 +24,11 @@ export class Book {
     type: Types.ObjectId,
   })
   author?: ObjectId;
+
+  @Prop({
+    type: [Types.ObjectId],
+  })
+  adaptations: ObjectId[];
 }
 
 export const BookSchema = SchemaFactory.createForClass(Book);

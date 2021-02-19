@@ -60,6 +60,7 @@ type Book implements IMedia {
   year: Int!
   genres: [String!]!
   author: Person
+  adaptations: [Film!]!
 }
 
 type Query {

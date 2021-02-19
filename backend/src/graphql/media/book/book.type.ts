@@ -1,6 +1,7 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { IMedia } from '../media.type';
 import { Person } from 'src/graphql/person/person.type';
+import { Film } from '../film/film.type';
 import { IDType } from 'src/graphql/id-type';
 
 @ObjectType({
@@ -19,4 +20,7 @@ export class Book implements IMedia {
 
   @Field({ nullable: true })
   author?: Person;
+
+  @Field((type) => [Film])
+  adaptations: Film[];
 }
