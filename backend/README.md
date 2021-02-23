@@ -84,3 +84,7 @@ Nest is [MIT licensed](LICENSE).
 ## Notes
 
 - For the League of Shadows warriors, I merged the information from the Wikipedia page and the original film credits (watched on Netflix)
+- Khan Bonfils played in Batman Begins and The Phantom Menace
+- Thomas Lennon played a doctor and also played in Memento
+- Patrick Leahy, US senator really likes to make cameos in Batman films
+- <http://www.impawards.com/>, <https://www.themoviedb.org/> for movie posters and images
