@@ -20,6 +20,9 @@ export class Book {
   })
   genres: string[];
 
+  @Prop()
+  cover?: string;
+
   @Prop({
     type: Types.ObjectId,
   })

@@ -5,6 +5,7 @@
 type Universe {
   id: ID!
   name: String!
+  wallpaper: String
   films: [Film!]!
 }
 
@@ -27,6 +28,8 @@ type Film implements IMedia {
   title: String!
   year: Int!
   genres: [String!]!
+  poster: String
+  wallpaper: String
   runningTime: Int!
   basedOnTrueFacts: Boolean!
   basedOnBook: Book
@@ -48,6 +51,7 @@ interface IMedia {
 type Person {
   id: ID!
   name: String!
+  portrait: String
   directed: [Film!]!
   composedFor: [Film!]!
   playedIn: [Role!]!
@@ -59,6 +63,7 @@ type Book implements IMedia {
   title: String!
   year: Int!
   genres: [String!]!
+  cover: String
   author: Person
   adaptations: [Film!]!
 }

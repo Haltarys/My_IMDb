@@ -10,6 +10,9 @@ export class Universe {
   @Field()
   name: string;
 
+  @Field({ nullable: true })
+  wallpaper?: string;
+
   @Field((type) => [Film])
   films: Film[];
 }

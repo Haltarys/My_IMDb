@@ -20,6 +20,12 @@ export class Film {
   })
   genres: string[];
 
+  @Prop()
+  poster?: string;
+
+  @Prop()
+  wallpaper?: string;
+
   @Prop({
     required: true,
   })

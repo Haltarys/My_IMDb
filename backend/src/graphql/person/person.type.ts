@@ -12,6 +12,9 @@ export class Person {
   @Field()
   name: string;
 
+  @Field({ nullable: true })
+  portrait?: string;
+
   @Field((type) => [Film])
   directed: Film[];
 

@@ -19,6 +19,9 @@ export class Book implements IMedia {
   genres: string[];
 
   @Field({ nullable: true })
+  cover?: string;
+
+  @Field({ nullable: true })
   author?: Person;
 
   @Field((type) => [Film])

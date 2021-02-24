@@ -20,6 +20,12 @@ export class Film implements IMedia {
 
   genres: string[];
 
+  @Field({ nullable: true })
+  poster?: string;
+
+  @Field({ nullable: true })
+  wallpaper?: string;
+
   @Field((type) => Int)
   runningTime: number;
 

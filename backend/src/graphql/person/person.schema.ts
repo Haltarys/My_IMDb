@@ -12,6 +12,9 @@ export class Person {
   })
   name: string;
 
+  @Prop()
+  portrait?: string;
+
   @Prop({ type: [Types.ObjectId] })
   directed: ObjectId[];
 

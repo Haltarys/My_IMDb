@@ -10,6 +10,9 @@ export class Universe {
   })
   name: string;
 
+  @Prop()
+  wallpaper?: string;
+
   @Prop({
     type: [Types.ObjectId],
     required: true,
