@@ -52,4 +52,7 @@ export class Film implements IMedia {
 
   @Field((type) => Universe, { nullable: true })
   cinematicUniverse?: Universe;
+
+  @Field((type) => [String])
+  trailers: string[];
 }

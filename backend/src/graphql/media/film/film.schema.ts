@@ -71,6 +71,11 @@ export class Film {
     type: Types.ObjectId,
   })
   cinematicUniverse?: ObjectId;
+
+  @Prop({
+    required: true,
+  })
+  trailers: string[];
 }
 
 export const FilmSchema = SchemaFactory.createForClass(Film);

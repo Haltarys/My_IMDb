@@ -39,6 +39,7 @@ type Film implements IMedia {
   previous: Film
   sequel: Film
   cinematicUniverse: Universe
+  trailers: [String!]!
 }
 
 interface IMedia {
