@@ -28,6 +28,7 @@ type Film implements IMedia {
   title: String!
   year: Int!
   genres: [String!]!
+  wikipedia: String
   poster: String
   wallpaper: String
   runningTime: Int!
@@ -47,11 +48,14 @@ interface IMedia {
   title: String!
   year: Int!
   genres: [String!]!
+  wikipedia: String
 }
 
 type Person {
   id: ID!
   name: String!
+  wikipedia: String
+  twitter: String
   portrait: String
   directed: [Film!]!
   composedFor: [Film!]!
@@ -64,6 +68,7 @@ type Book implements IMedia {
   title: String!
   year: Int!
   genres: [String!]!
+  wikipedia: String
   cover: String
   author: Person
   adaptations: [Film!]!

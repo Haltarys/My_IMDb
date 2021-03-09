@@ -13,6 +13,12 @@ export class Person {
   name: string;
 
   @Prop()
+  wikipedia?: string;
+
+  @Prop()
+  twitter?: string;
+
+  @Prop()
   portrait?: string;
 
   @Prop({ type: [Types.ObjectId] })

@@ -14,4 +14,7 @@ export abstract class IMedia {
 
   @Field((type) => [String])
   genres: string[];
+
+  @Field({ nullable: true })
+  wikipedia?: string;
 }

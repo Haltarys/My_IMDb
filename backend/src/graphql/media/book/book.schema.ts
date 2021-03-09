@@ -21,6 +21,9 @@ export class Book {
   genres: string[];
 
   @Prop()
+  wikipedia?: string;
+
+  @Prop()
   cover?: string;
 
   @Prop({

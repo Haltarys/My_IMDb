@@ -13,6 +13,12 @@ export class Person {
   name: string;
 
   @Field({ nullable: true })
+  wikipedia?: string;
+
+  @Field({ nullable: true })
+  twitter?: string;
+
+  @Field({ nullable: true })
   portrait?: string;
 
   @Field((type) => [Film])

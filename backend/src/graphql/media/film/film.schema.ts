@@ -21,6 +21,9 @@ export class Film {
   genres: string[];
 
   @Prop()
+  wikipedia?: string;
+
+  @Prop()
   poster?: string;
 
   @Prop()

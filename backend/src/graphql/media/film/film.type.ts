@@ -20,6 +20,8 @@ export class Film implements IMedia {
 
   genres: string[];
 
+  wikipedia?: string;
+
   @Field({ nullable: true })
   poster?: string;
 

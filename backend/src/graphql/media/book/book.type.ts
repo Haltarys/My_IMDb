@@ -18,6 +18,8 @@ export class Book implements IMedia {
 
   genres: string[];
 
+  wikipedia?: string;
+
   @Field({ nullable: true })
   cover?: string;
 
