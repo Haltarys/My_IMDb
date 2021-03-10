@@ -12,6 +12,9 @@ export class Role {
   @Field((type) => Film)
   film: Film;
 
+  @Field({ nullable: true })
+  roleName?: string;
+
   @Field((type) => Character)
   character: Character;
 

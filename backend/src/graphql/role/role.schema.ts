@@ -11,6 +11,9 @@ export class Role {
   })
   film: ObjectId;
 
+  @Prop()
+  roleName?: string;
+
   @Prop({
     type: Types.ObjectId,
     required: true,

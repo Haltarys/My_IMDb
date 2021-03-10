@@ -18,6 +18,7 @@ type Character {
 type Role {
   id: ID!
   film: Film!
+  roleName: String
   character: Character!
   playedBy: [Person!]!
   voicedBy(singing: Boolean = false, language: String): Person
