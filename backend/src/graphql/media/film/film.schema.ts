@@ -24,6 +24,9 @@ export class Film {
   wikipedia?: string;
 
   @Prop()
+  tagline?: string;
+
+  @Prop()
   poster?: string;
 
   @Prop()

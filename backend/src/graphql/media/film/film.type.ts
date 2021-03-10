@@ -23,6 +23,9 @@ export class Film implements IMedia {
   wikipedia?: string;
 
   @Field({ nullable: true })
+  tagline?: string;
+
+  @Field({ nullable: true })
   poster?: string;
 
   @Field({ nullable: true })

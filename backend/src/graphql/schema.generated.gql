@@ -30,6 +30,7 @@ type Film implements IMedia {
   year: Int!
   genres: [String!]!
   wikipedia: String
+  tagline: String
   poster: String
   wallpaper: String
   runningTime: Int!
