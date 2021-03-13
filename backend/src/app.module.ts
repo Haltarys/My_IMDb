@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { GraphQLModule } from '@nestjs/graphql';
-import { MyImdbModule } from './graphql/my-imdb.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { join } from 'path';
+import { MyImdbModule } from './graphql/my-imdb.module';
+import { AppController } from './app.controller';
 import {
   DB_URL,
   DB_NAME,
