@@ -71,20 +71,3 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
-
-## Useful links for development
-
-- <node_modules/mongoose/index.d.ts>: No need for a `id` GraphQL resolver since Mongooose adds an id property which is the stringified version of the _id ObjectId property
-- <https://docs.mongodb.com/manual/reference/method/db.collection.renameCollection/>
-- <https://stackoverflow.com/questions/8303900/mongodb-mongoose-findmany-find-all-documents-with-ids-listed-in-array>
-- <https://github.com/Automattic/mongoose/issues/2359>
-- <https://stackoverflow.com/questions/39511137/is-there-a-way-to-map-array-of-ids-to-documents-in-one-query-using-mongodb>
-- <https://stackoverflow.com/questions/32811510/mongoose-findoneandupdate-doesnt-return-updated-document>
-
-## Notes
-
-- For the League of Shadows warriors, I merged the information from the Wikipedia page and the original film credits (watched on Netflix)
-- Khan Bonfils played in Batman Begins and The Phantom Menace
-- Thomas Lennon played a doctor and also played in Memento
-- Patrick Leahy, US senator really likes to make cameos in Batman films
-- <http://www.impawards.com/>, <https://www.themoviedb.org/> for movie posters and images
