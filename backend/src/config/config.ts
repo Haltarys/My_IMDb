@@ -1,4 +1,4 @@
-const PORT = 3000;
+const PORT = 8000;
 const DB_URL = process.env.DB_URL;
 const DB_NAME = process.env.DB_NAME;
 const DB_ADMIN_USER = process.env.DB_ADMIN_USER;
