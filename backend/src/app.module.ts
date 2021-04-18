@@ -17,7 +17,6 @@ import {
       autoSchemaFile: join(process.cwd(), 'src/graphql/schema.generated.gql'),
       sortSchema: false,
     }),
-    MyImdbModule,
     MongooseModule.forRoot(DB_URL, {
       dbName: DB_NAME,
       auth: {
@@ -27,6 +26,7 @@ import {
       retryWrites: true,
       w: 'majority',
     }),
+    MyImdbModule,
   ],
   controllers: [AppController],
 })
