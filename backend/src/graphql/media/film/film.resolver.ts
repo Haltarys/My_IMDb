@@ -7,7 +7,7 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { Film } from './film.type';
-import { Film as MongoFilm } from './film.schema';
+import { Film as FilmEntity } from './film.entity';
 import { FilmService } from './film.service';
 import { BookService } from '../book/book.service';
 import { PersonService } from 'src/graphql/person/person.service';
@@ -26,7 +26,7 @@ export class FilmResolver {
   ) {}
 
   @ResolveField()
-  basedOnTrueFacts(@Parent() film: MongoFilm) {
+  basedOnTrueFacts(@Parent() film: FilmEntity) {
     const { basedOnTrueFacts } = film;
 
     // return false if null or undefined
@@ -34,35 +34,35 @@ export class FilmResolver {
   }
 
   @ResolveField()
-  basedOnBook(@Parent() film: MongoFilm) {
+  basedOnBook(@Parent() film: FilmEntity) {
     const { basedOnBook: bookID } = film;
 
     return bookID ? this.bookService.findBookByID(bookID) : null;
   }
 
   @ResolveField()
-  directedBy(@Parent() film: MongoFilm) {
+  directedBy(@Parent() film: FilmEntity) {
     const { directedBy: directorIDs } = film;
 
     return this.personService.findPeopleWithIDs(directorIDs);
   }
 
   @ResolveField()
-  musicBy(@Parent() film: MongoFilm) {
+  musicBy(@Parent() film: FilmEntity) {
     const { musicBy: musicComposerIDs } = film;
 
     return this.personService.findPeopleWithIDs(musicComposerIDs);
   }
 
   @ResolveField()
-  cast(@Parent() film: MongoFilm) {
+  cast(@Parent() film: FilmEntity) {
     const { cast: roleIDs } = film;
 
     return this.roleService.findRolesWithIDs(roleIDs);
   }
 
   @ResolveField()
-  previous(@Parent() film: MongoFilm) {
+  previous(@Parent() film: FilmEntity) {
     const { previous: previousFilmID } = film;
 
     return previousFilmID
@@ -71,14 +71,14 @@ export class FilmResolver {
   }
 
   @ResolveField()
-  sequel(@Parent() film: MongoFilm) {
+  sequel(@Parent() film: FilmEntity) {
     const { sequel: sequelID } = film;
 
     return sequelID ? this.filmService.findFilmByID(sequelID) : null;
   }
 
   @ResolveField()
-  cinematicUniverse(@Parent() film: MongoFilm) {
+  cinematicUniverse(@Parent() film: FilmEntity) {
     const { cinematicUniverse: universeID } = film;
 
     return universeID

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId } from 'mongoose';
-import { Character, CharacterDocument } from './character.schema';
+import { Character, CharacterDocument } from './character.entity';
 import { IDType } from 'src/graphql/id-type';
 
 @Injectable()

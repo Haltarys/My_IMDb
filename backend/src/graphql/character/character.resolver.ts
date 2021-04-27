@@ -7,7 +7,7 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { Character } from './character.type';
-import { Character as MongoCharacter } from './character.schema';
+import { Character as CharacterEntity } from './character.entity';
 import { CharacterService } from './character.service';
 import { RoleService } from '../role/role.service';
 import { IDType } from '../id-type';
@@ -20,7 +20,7 @@ export class CharacterResolver {
   ) {}
 
   @ResolveField()
-  featuredIn(@Parent() character: MongoCharacter) {
+  featuredIn(@Parent() character: CharacterEntity) {
     const { featuredIn: roleIDs } = character;
 
     return this.roleService.findRolesWithIDs(roleIDs);

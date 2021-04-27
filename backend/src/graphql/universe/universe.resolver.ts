@@ -7,7 +7,7 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { Universe } from './universe.type';
-import { Universe as MongoUniverse } from './universe.schema';
+import { Universe as UniverseEntity } from './universe.entity';
 import { UniverseService } from './universe.service';
 import { FilmService } from '../media/film/film.service';
 import { IDType } from '../id-type';
@@ -20,7 +20,7 @@ export class UniverseResolver {
   ) {}
 
   @ResolveField()
-  films(@Parent() universe: MongoUniverse) {
+  films(@Parent() universe: UniverseEntity) {
     const { films: filmIDs } = universe;
 
     return this.filmService.findFilmsWithIDs(filmIDs);

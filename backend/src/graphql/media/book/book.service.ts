@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId } from 'mongoose';
-import { Book, BookDocument } from './book.schema';
+import { Book, BookDocument } from './book.entity';
 import { IDType } from 'src/graphql/id-type';
 
 @Injectable()

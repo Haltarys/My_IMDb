@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId } from 'mongoose';
-import { Universe, UniverseDocument } from './universe.schema';
+import { Universe, UniverseDocument } from './universe.entity';
 import { IDType } from '../id-type';
 
 @Injectable()

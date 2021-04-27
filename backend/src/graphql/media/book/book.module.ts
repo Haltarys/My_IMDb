@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Book, BookSchema } from './book.schema';
-import { Person, PersonSchema } from 'src/graphql/person/person.schema';
-import { Film, FilmSchema } from '../film/film.schema';
+import { Book, BookSchema } from './book.entity';
+import { Person, PersonSchema } from 'src/graphql/person/person.entity';
+import { Film, FilmSchema } from '../film/film.entity';
 import { BookResolver } from './book.resolver';
 import { BookService } from './book.service';
 import { PersonService } from 'src/graphql/person/person.service';

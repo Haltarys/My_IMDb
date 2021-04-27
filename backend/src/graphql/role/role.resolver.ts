@@ -7,7 +7,7 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { Role } from './role.type';
-import { Role as MongoRole } from './role.schema';
+import { Role as RoleEntity } from './role.entity';
 import { RoleService } from './role.service';
 import { FilmService } from '../media/film/film.service';
 import { CharacterService } from '../character/character.service';
@@ -24,21 +24,21 @@ export class RoleResolver {
   ) {}
 
   @ResolveField()
-  film(@Parent() role: MongoRole) {
+  film(@Parent() role: RoleEntity) {
     const { film: filmID } = role;
 
     return this.filmService.findFilmByID(filmID);
   }
 
   @ResolveField()
-  character(@Parent() role: MongoRole) {
+  character(@Parent() role: RoleEntity) {
     const { character: characterID } = role;
 
     return this.characterService.findCharacterByID(characterID);
   }
 
   @ResolveField()
-  playedBy(@Parent() role: MongoRole) {
+  playedBy(@Parent() role: RoleEntity) {
     const { playedBy: actorIDs } = role;
 
     return this.personService.findPeopleWithIDs(actorIDs);

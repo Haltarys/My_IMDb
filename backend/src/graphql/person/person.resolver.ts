@@ -7,7 +7,7 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { Person } from './person.type';
-import { Person as MongoPerson } from './person.schema';
+import { Person as PersonEntity } from './person.entity';
 import { PersonService } from './person.service';
 import { FilmService } from '../media/film/film.service';
 import { IDType } from '../id-type';
@@ -24,28 +24,28 @@ export class PersonResolver {
   ) {}
 
   @ResolveField()
-  directed(@Parent() person: MongoPerson) {
+  directed(@Parent() person: PersonEntity) {
     const { directed: filmIDs } = person;
 
     return this.filmService.findFilmsWithIDs(filmIDs);
   }
 
   @ResolveField()
-  composedFor(@Parent() person: MongoPerson) {
+  composedFor(@Parent() person: PersonEntity) {
     const { composedFor: filmIDs } = person;
 
     return this.filmService.findFilmsWithIDs(filmIDs);
   }
 
   @ResolveField()
-  playedIn(@Parent() person: MongoPerson) {
+  playedIn(@Parent() person: PersonEntity) {
     const { playedIn: roleIDs } = person;
 
     return this.roleService.findRolesWithIDs(roleIDs);
   }
 
   @ResolveField()
-  booksWritten(@Parent() person: MongoPerson) {
+  booksWritten(@Parent() person: PersonEntity) {
     const { booksWritten: bookIDs } = person;
 
     return this.bookService.findBooksWithIDs(bookIDs);

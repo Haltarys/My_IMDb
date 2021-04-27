@@ -7,7 +7,7 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { Book } from './book.type';
-import { Book as MongoBook } from './book.schema';
+import { Book as BookEntity } from './book.entity';
 import { BookService } from './book.service';
 import { PersonService } from 'src/graphql/person/person.service';
 import { FilmService } from '../film/film.service';
@@ -22,14 +22,14 @@ export class BookResolver {
   ) {}
 
   @ResolveField()
-  author(@Parent() book: MongoBook) {
+  author(@Parent() book: BookEntity) {
     const { author: authorID } = book;
 
     return authorID ? this.personService.findPersonByID(authorID) : null;
   }
 
   @ResolveField()
-  adaptations(@Parent() book: MongoBook) {
+  adaptations(@Parent() book: BookEntity) {
     const { adaptations: filmIDs } = book;
 
     return this.filmService.findFilmsWithIDs(filmIDs);

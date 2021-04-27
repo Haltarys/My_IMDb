@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Person, PersonSchema } from './person.schema';
-import { Film, FilmSchema } from '../media/film/film.schema';
-import { Role, RoleSchema } from '../role/role.schema';
-import { Book, BookSchema } from '../media/book/book.schema';
+import { Person, PersonSchema } from './person.entity';
+import { Film, FilmSchema } from '../media/film/film.entity';
+import { Role, RoleSchema } from '../role/role.entity';
+import { Book, BookSchema } from '../media/book/book.entity';
 import { PersonResolver } from './person.resolver';
 import { PersonService } from './person.service';
 import { FilmService } from '../media/film/film.service';
