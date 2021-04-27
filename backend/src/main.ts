@@ -4,12 +4,12 @@ import { join } from 'path';
 import { AppModule } from './app.module';
 import { PORT } from './config/config';
 
-const bootstrap = async () => {
+async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   app.useStaticAssets(join(__dirname, '..', 'public'));
 
   await app.listen(PORT);
-};
+}
 
 bootstrap();
