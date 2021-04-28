@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId } from 'mongoose';
 import { Character, CharacterDocument } from './character.entity';
-import { IDType } from 'src/graphql/id-type';
 
 @Injectable()
 export class CharacterService {
@@ -15,7 +14,7 @@ export class CharacterService {
     return this.characterModel.find().exec();
   }
 
-  async findCharacterByID(id: IDType | ObjectId): Promise<Character> {
+  async findCharacterByID(id: string | ObjectId): Promise<Character> {
     return this.characterModel.findById(id).exec();
   }
 
@@ -24,7 +23,7 @@ export class CharacterService {
   }
 
   async findCharactersWithIDs(
-    characterIDs: IDType[] | ObjectId[],
+    characterIDs: string[] | ObjectId[],
   ): Promise<Character[]> {
     // Currently, there is an issue with Typescript on the .map() method
     // with union or array types (see: https://github.com/microsoft/TypeScript/issues/36390)

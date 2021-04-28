@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId } from 'mongoose';
 import { Role, RoleDocument } from './role.entity';
-import { IDType } from '../id-type';
 
 @Injectable()
 export class RoleService {
@@ -12,11 +11,11 @@ export class RoleService {
     return this.roleModel.find().exec();
   }
 
-  async findRoleByID(id: IDType | ObjectId): Promise<Role> {
+  async findRoleByID(id: string | ObjectId): Promise<Role> {
     return this.roleModel.findById(id).exec();
   }
 
-  async findRolesWithIDs(roleIDs: IDType[] | ObjectId[]): Promise<Role[]> {
+  async findRolesWithIDs(roleIDs: string[] | ObjectId[]): Promise<Role[]> {
     // Currently, there is an issue with Typescript on the .map() method
     // with union or array types (see: https://github.com/microsoft/TypeScript/issues/36390)
     // The workaround is to cast the array of IDs to 'any[]' to use .map()

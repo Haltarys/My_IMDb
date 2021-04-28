@@ -10,7 +10,6 @@ import { Character } from './character.type';
 import { Character as CharacterEntity } from './character.entity';
 import { CharacterService } from './character.service';
 import { RoleService } from '../role/role.service';
-import { IDType } from '../id-type';
 
 @Resolver((of) => Character)
 export class CharacterResolver {
@@ -32,7 +31,7 @@ export class CharacterResolver {
   }
 
   @Query((returns) => Character, { nullable: true })
-  async getCharacterByID(@Args('id', { type: () => ID }) id: IDType) {
+  async getCharacterByID(@Args('id', { type: () => ID }) id: string) {
     return this.characterService.findCharacterByID(id);
   }
 
@@ -42,7 +41,7 @@ export class CharacterResolver {
   }
 
   @Query((returns) => [Character], { nullable: 'items' })
-  async getCharactersWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
+  async getCharactersWithIDs(@Args('ids', { type: () => [ID] }) ids: string[]) {
     return this.characterService.findCharactersWithIDs(ids);
   }
 }

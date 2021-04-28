@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId } from 'mongoose';
 import { Universe, UniverseDocument } from './universe.entity';
-import { IDType } from '../id-type';
 
 @Injectable()
 export class UniverseService {
@@ -14,7 +13,7 @@ export class UniverseService {
     return this.universeModel.find().exec();
   }
 
-  async findUniverseByID(id: IDType | ObjectId): Promise<Universe> {
+  async findUniverseByID(id: string | ObjectId): Promise<Universe> {
     return this.universeModel.findById(id).exec();
   }
 
@@ -23,7 +22,7 @@ export class UniverseService {
   }
 
   async findUniversesWithIDs(
-    universeIDs: IDType[] | ObjectId[],
+    universeIDs: string[] | ObjectId[],
   ): Promise<Universe[]> {
     // Currently, there is an issue with Typescript on the .map() method
     // with union or array types (see: https://github.com/microsoft/TypeScript/issues/36390)

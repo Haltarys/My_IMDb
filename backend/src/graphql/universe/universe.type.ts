@@ -1,11 +1,10 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { Film } from '../media/film/film.type';
-import { IDType } from '../id-type';
 
 @ObjectType()
 export class Universe {
   @Field((type) => ID)
-  id: IDType;
+  id: string;
 
   @Field()
   name: string;

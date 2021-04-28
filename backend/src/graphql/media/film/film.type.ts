@@ -4,7 +4,6 @@ import { Book } from '../book/book.type';
 import { Person } from 'src/graphql/person/person.type';
 import { Universe } from 'src/graphql/universe/universe.type';
 import { Role } from 'src/graphql/role/role.type';
-import { IDType } from 'src/graphql/id-type';
 
 @ObjectType({
   // Can also return an array of types if it implements
@@ -12,7 +11,7 @@ import { IDType } from 'src/graphql/id-type';
   implements: () => IMedia,
 })
 export class Film implements IMedia {
-  id: IDType;
+  id: string;
 
   title: string;
 

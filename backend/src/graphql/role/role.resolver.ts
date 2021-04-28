@@ -12,7 +12,6 @@ import { RoleService } from './role.service';
 import { FilmService } from '../media/film/film.service';
 import { CharacterService } from '../character/character.service';
 import { PersonService } from '../person/person.service';
-import { IDType } from '../id-type';
 
 @Resolver((of) => Role)
 export class RoleResolver {
@@ -59,12 +58,12 @@ export class RoleResolver {
   }
 
   @Query((returns) => Role, { nullable: true })
-  async getRoleByID(@Args('id', { type: () => ID }) id: IDType) {
+  async getRoleByID(@Args('id', { type: () => ID }) id: string) {
     return this.roleService.findRoleByID(id);
   }
 
   @Query((returns) => [Role], { nullable: 'items' })
-  async getRolesWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
+  async getRolesWithIDs(@Args('ids', { type: () => [ID] }) ids: string[]) {
     return this.roleService.findRolesWithIDs(ids);
   }
 }

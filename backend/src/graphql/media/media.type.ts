@@ -1,10 +1,9 @@
 import { Field, ID, Int, InterfaceType } from '@nestjs/graphql';
-import { IDType } from '../id-type';
 
 @InterfaceType()
 export abstract class IMedia {
   @Field((type) => ID)
-  id: IDType;
+  id: string;
 
   @Field()
   title: string;

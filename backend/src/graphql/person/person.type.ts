@@ -2,12 +2,11 @@ import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { Film } from '../media/film/film.type';
 import { Role } from '../role/role.type';
 import { Book } from '../media/book/book.type';
-import { IDType } from '../id-type';
 
 @ObjectType()
 export class Person {
   @Field((type) => ID)
-  id: IDType;
+  id: string;
 
   @Field()
   name: string;

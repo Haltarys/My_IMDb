@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId } from 'mongoose';
 import { Book, BookDocument } from './book.entity';
-import { IDType } from 'src/graphql/id-type';
 
 @Injectable()
 export class BookService {
@@ -12,7 +11,7 @@ export class BookService {
     return this.bookModel.find().exec();
   }
 
-  async findBookByID(id: IDType | ObjectId): Promise<Book> {
+  async findBookByID(id: string | ObjectId): Promise<Book> {
     return this.bookModel.findById(id).exec();
   }
 
@@ -20,7 +19,7 @@ export class BookService {
     return this.bookModel.findOne({ title }).exec();
   }
 
-  async findBooksWithIDs(bookIDs: IDType[] | ObjectId[]): Promise<Book[]> {
+  async findBooksWithIDs(bookIDs: string[] | ObjectId[]): Promise<Book[]> {
     // Currently, there is an issue with Typescript on the .map() method
     // with union or array types (see: https://github.com/microsoft/TypeScript/issues/36390)
     // The workaround is to cast the array of IDs to 'any[]' to use .map()

@@ -10,7 +10,6 @@ import { Person } from './person.type';
 import { Person as PersonEntity } from './person.entity';
 import { PersonService } from './person.service';
 import { FilmService } from '../media/film/film.service';
-import { IDType } from '../id-type';
 import { RoleService } from '../role/role.service';
 import { BookService } from '../media/book/book.service';
 
@@ -57,7 +56,7 @@ export class PersonResolver {
   }
 
   @Query((returns) => Person, { nullable: true })
-  async getPersonByID(@Args('id', { type: () => ID }) id: IDType) {
+  async getPersonByID(@Args('id', { type: () => ID }) id: string) {
     return this.personService.findPersonByID(id);
   }
 
@@ -67,7 +66,7 @@ export class PersonResolver {
   }
 
   @Query((returns) => [Person], { nullable: 'items' })
-  async getPeopleWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
+  async getPeopleWithIDs(@Args('ids', { type: () => [ID] }) ids: string[]) {
     return this.personService.findPeopleWithIDs(ids);
   }
 }

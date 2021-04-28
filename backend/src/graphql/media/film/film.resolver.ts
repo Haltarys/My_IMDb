@@ -13,7 +13,6 @@ import { BookService } from '../book/book.service';
 import { PersonService } from 'src/graphql/person/person.service';
 import { RoleService } from 'src/graphql/role/role.service';
 import { UniverseService } from 'src/graphql/universe/universe.service';
-import { IDType } from 'src/graphql/id-type';
 
 @Resolver((of) => Film)
 export class FilmResolver {
@@ -92,7 +91,7 @@ export class FilmResolver {
   }
 
   @Query((returns) => Film, { nullable: true })
-  getFilmByID(@Args('id', { type: () => ID }) id: IDType) {
+  getFilmByID(@Args('id', { type: () => ID }) id: string) {
     return this.filmService.findFilmByID(id);
   }
 
@@ -102,7 +101,7 @@ export class FilmResolver {
   }
 
   @Query((returns) => [Film], { nullable: 'items' })
-  getFilmsWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
+  getFilmsWithIDs(@Args('ids', { type: () => [ID] }) ids: string[]) {
     return this.filmService.findFilmsWithIDs(ids);
   }
 }

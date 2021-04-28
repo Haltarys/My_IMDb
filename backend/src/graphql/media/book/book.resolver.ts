@@ -11,7 +11,6 @@ import { Book as BookEntity } from './book.entity';
 import { BookService } from './book.service';
 import { PersonService } from 'src/graphql/person/person.service';
 import { FilmService } from '../film/film.service';
-import { IDType } from 'src/graphql/id-type';
 
 @Resolver((of) => Book)
 export class BookResolver {
@@ -41,7 +40,7 @@ export class BookResolver {
   }
 
   @Query((returns) => Book, { nullable: true })
-  async getBookByID(@Args('id', { type: () => ID }) id: IDType) {
+  async getBookByID(@Args('id', { type: () => ID }) id: string) {
     return this.bookService.findBookByID(id);
   }
 
@@ -51,7 +50,7 @@ export class BookResolver {
   }
 
   @Query((returns) => [Book], { nullable: 'items' })
-  async getBooksWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
+  async getBooksWithIDs(@Args('ids', { type: () => [ID] }) ids: string[]) {
     return this.bookService.findBooksWithIDs(ids);
   }
 }
