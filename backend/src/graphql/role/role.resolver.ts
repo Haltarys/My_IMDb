@@ -24,14 +24,14 @@ export class RoleResolver {
   ) {}
 
   @ResolveField()
-  film(@Parent() role: RoleEntity) {
+  async film(@Parent() role: RoleEntity) {
     const { film: filmID } = role;
 
     return this.filmService.findFilmByID(filmID);
   }
 
   @ResolveField()
-  character(@Parent() role: RoleEntity) {
+  async character(@Parent() role: RoleEntity) {
     const { character: characterID } = role;
 
     return this.characterService.findCharacterByID(characterID);
@@ -45,7 +45,7 @@ export class RoleResolver {
   }
 
   @ResolveField()
-  voicedBy(
+  async voicedBy(
     @Parent() role,
     @Args('language', { nullable: true }) language: string,
     @Args('singing', { defaultValue: false }) singing: boolean,
@@ -54,17 +54,17 @@ export class RoleResolver {
   }
 
   @Query((returns) => [Role])
-  getAllRoles() {
+  async getAllRoles() {
     return this.roleService.findAllRoles();
   }
 
   @Query((returns) => Role, { nullable: true })
-  getRoleByID(@Args('id', { type: () => ID }) id: IDType) {
+  async getRoleByID(@Args('id', { type: () => ID }) id: IDType) {
     return this.roleService.findRoleByID(id);
   }
 
   @Query((returns) => [Role], { nullable: 'items' })
-  getRolesWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
+  async getRolesWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
     return this.roleService.findRolesWithIDs(ids);
   }
 }

@@ -22,36 +22,36 @@ export class BookResolver {
   ) {}
 
   @ResolveField()
-  author(@Parent() book: BookEntity) {
+  async author(@Parent() book: BookEntity) {
     const { author: authorID } = book;
 
     return authorID ? this.personService.findPersonByID(authorID) : null;
   }
 
   @ResolveField()
-  adaptations(@Parent() book: BookEntity) {
+  async adaptations(@Parent() book: BookEntity) {
     const { adaptations: filmIDs } = book;
 
     return this.filmService.findFilmsWithIDs(filmIDs);
   }
 
   @Query((returns) => [Book])
-  getAllBooks() {
+  async getAllBooks() {
     return this.bookService.findAllBooks();
   }
 
   @Query((returns) => Book, { nullable: true })
-  getBookByID(@Args('id', { type: () => ID }) id: IDType) {
+  async getBookByID(@Args('id', { type: () => ID }) id: IDType) {
     return this.bookService.findBookByID(id);
   }
 
   @Query((returns) => Book, { nullable: true })
-  getBookByTitle(@Args('title') title: string) {
+  async getBookByTitle(@Args('title') title: string) {
     return this.bookService.findBookByTitle(title);
   }
 
   @Query((returns) => [Book], { nullable: 'items' })
-  getBooksWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
+  async getBooksWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
     return this.bookService.findBooksWithIDs(ids);
   }
 }

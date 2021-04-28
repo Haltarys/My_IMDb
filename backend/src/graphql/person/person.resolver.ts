@@ -24,50 +24,50 @@ export class PersonResolver {
   ) {}
 
   @ResolveField()
-  directed(@Parent() person: PersonEntity) {
+  async directed(@Parent() person: PersonEntity) {
     const { directed: filmIDs } = person;
 
     return this.filmService.findFilmsWithIDs(filmIDs);
   }
 
   @ResolveField()
-  composedFor(@Parent() person: PersonEntity) {
+  async composedFor(@Parent() person: PersonEntity) {
     const { composedFor: filmIDs } = person;
 
     return this.filmService.findFilmsWithIDs(filmIDs);
   }
 
   @ResolveField()
-  playedIn(@Parent() person: PersonEntity) {
+  async playedIn(@Parent() person: PersonEntity) {
     const { playedIn: roleIDs } = person;
 
     return this.roleService.findRolesWithIDs(roleIDs);
   }
 
   @ResolveField()
-  booksWritten(@Parent() person: PersonEntity) {
+  async booksWritten(@Parent() person: PersonEntity) {
     const { booksWritten: bookIDs } = person;
 
     return this.bookService.findBooksWithIDs(bookIDs);
   }
 
   @Query((returns) => [Person])
-  getEveryone() {
+  async getEveryone() {
     return this.personService.findEveryone();
   }
 
   @Query((returns) => Person, { nullable: true })
-  getPersonByID(@Args('id', { type: () => ID }) id: IDType) {
+  async getPersonByID(@Args('id', { type: () => ID }) id: IDType) {
     return this.personService.findPersonByID(id);
   }
 
   @Query((returns) => Person, { nullable: true })
-  getPersonByName(@Args('name') name: string) {
+  async getPersonByName(@Args('name') name: string) {
     return this.personService.findPersonByName(name);
   }
 
   @Query((returns) => [Person], { nullable: 'items' })
-  getPeopleWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
+  async getPeopleWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
     return this.personService.findPeopleWithIDs(ids);
   }
 }

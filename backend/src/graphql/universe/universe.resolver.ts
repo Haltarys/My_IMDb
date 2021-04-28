@@ -20,29 +20,29 @@ export class UniverseResolver {
   ) {}
 
   @ResolveField()
-  films(@Parent() universe: UniverseEntity) {
+  async films(@Parent() universe: UniverseEntity) {
     const { films: filmIDs } = universe;
 
     return this.filmService.findFilmsWithIDs(filmIDs);
   }
 
   @Query((returns) => [Universe])
-  getAllUniverses() {
+  async getAllUniverses() {
     return this.universeService.findAllUniverses();
   }
 
   @Query((returns) => Universe, { nullable: true })
-  getUniverseByID(@Args('id', { type: () => ID }) id: IDType) {
+  async getUniverseByID(@Args('id', { type: () => ID }) id: IDType) {
     return this.universeService.findUniverseByID(id);
   }
 
   @Query((returns) => Universe, { nullable: true })
-  getUniverseByName(@Args('name') name: string) {
+  async getUniverseByName(@Args('name') name: string) {
     return this.universeService.findUniverseByName(name);
   }
 
   @Query((returns) => [Universe], { nullable: 'items' })
-  getUniversesWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
+  async getUniversesWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
     return this.universeService.findUniversesWithIDs(ids);
   }
 }

@@ -20,29 +20,29 @@ export class CharacterResolver {
   ) {}
 
   @ResolveField()
-  featuredIn(@Parent() character: CharacterEntity) {
+  async featuredIn(@Parent() character: CharacterEntity) {
     const { featuredIn: roleIDs } = character;
 
     return this.roleService.findRolesWithIDs(roleIDs);
   }
 
   @Query((returns) => [Character])
-  getAllCharacters() {
+  async getAllCharacters() {
     return this.characterService.findAllCharacters();
   }
 
   @Query((returns) => Character, { nullable: true })
-  getCharacterByID(@Args('id', { type: () => ID }) id: IDType) {
+  async getCharacterByID(@Args('id', { type: () => ID }) id: IDType) {
     return this.characterService.findCharacterByID(id);
   }
 
   @Query((returns) => Character, { nullable: true })
-  getCharacterByName(@Args('name') name: string) {
+  async getCharacterByName(@Args('name') name: string) {
     return this.characterService.findCharacterByName(name);
   }
 
   @Query((returns) => [Character], { nullable: 'items' })
-  getCharactersWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
+  async getCharactersWithIDs(@Args('ids', { type: () => [ID] }) ids: IDType[]) {
     return this.characterService.findCharactersWithIDs(ids);
   }
 }

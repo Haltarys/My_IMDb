@@ -26,7 +26,7 @@ export class FilmResolver {
   ) {}
 
   @ResolveField()
-  basedOnTrueFacts(@Parent() film: FilmEntity) {
+  async basedOnTrueFacts(@Parent() film: FilmEntity) {
     const { basedOnTrueFacts } = film;
 
     // return false if null or undefined
@@ -34,21 +34,21 @@ export class FilmResolver {
   }
 
   @ResolveField()
-  basedOnBook(@Parent() film: FilmEntity) {
+  async basedOnBook(@Parent() film: FilmEntity) {
     const { basedOnBook: bookID } = film;
 
     return bookID ? this.bookService.findBookByID(bookID) : null;
   }
 
   @ResolveField()
-  directedBy(@Parent() film: FilmEntity) {
+  async directedBy(@Parent() film: FilmEntity) {
     const { directedBy: directorIDs } = film;
 
     return this.personService.findPeopleWithIDs(directorIDs);
   }
 
   @ResolveField()
-  musicBy(@Parent() film: FilmEntity) {
+  async musicBy(@Parent() film: FilmEntity) {
     const { musicBy: musicComposerIDs } = film;
 
     return this.personService.findPeopleWithIDs(musicComposerIDs);
@@ -62,7 +62,7 @@ export class FilmResolver {
   }
 
   @ResolveField()
-  previous(@Parent() film: FilmEntity) {
+  async previous(@Parent() film: FilmEntity) {
     const { previous: previousFilmID } = film;
 
     return previousFilmID
@@ -71,14 +71,14 @@ export class FilmResolver {
   }
 
   @ResolveField()
-  sequel(@Parent() film: FilmEntity) {
+  async sequel(@Parent() film: FilmEntity) {
     const { sequel: sequelID } = film;
 
     return sequelID ? this.filmService.findFilmByID(sequelID) : null;
   }
 
   @ResolveField()
-  cinematicUniverse(@Parent() film: FilmEntity) {
+  async cinematicUniverse(@Parent() film: FilmEntity) {
     const { cinematicUniverse: universeID } = film;
 
     return universeID
