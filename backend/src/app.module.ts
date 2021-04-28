@@ -14,7 +14,7 @@ import {
 @Module({
   imports: [
     GraphQLModule.forRoot({
-      autoSchemaFile: join(process.cwd(), 'src/graphql/schema.generated.gql'),
+      autoSchemaFile: join(process.cwd(), 'src/graphql/schema.gql'),
     }),
     MongooseModule.forRoot(DB_URL, {
       dbName: DB_NAME,
