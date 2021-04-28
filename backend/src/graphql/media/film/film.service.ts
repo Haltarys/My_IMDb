@@ -9,29 +9,22 @@ export class FilmService {
   constructor(@InjectModel(Film.name) private filmModel: Model<FilmDocument>) {}
 
   async findAllFilms(): Promise<Film[]> {
-    const films = await this.filmModel.find().exec();
-
-    return films;
+    return this.filmModel.find().exec();
   }
 
   async findFilmByID(id: IDType | ObjectId): Promise<Film> {
-    const film = await this.filmModel.findById(id).exec();
-
-    return film;
+    return this.filmModel.findById(id).exec();
   }
 
   async findFilmByTitle(title: string): Promise<Film> {
-    const film = await this.filmModel.findOne({ title }).exec();
-
-    return film;
+    return this.filmModel.findOne({ title }).exec();
   }
 
   async findFilmsWithIDs(filmIDs: IDType[] | ObjectId[]): Promise<Film[]> {
     // Currently, there is an issue with Typescript on the .map() method
     // with union or array types (see: https://github.com/microsoft/TypeScript/issues/36390)
     // The workaround is to cast the array of IDs to 'any[]' to use .map()
-
-    const films = await this.filmModel
+    return this.filmModel
       .find({ _id: { $in: filmIDs } })
       .exec()
       .then((unorderedFilms) =>
@@ -39,7 +32,5 @@ export class FilmService {
           unorderedFilms.find((film) => film.id === String(id)),
         ),
       );
-
-    return films;
   }
 }

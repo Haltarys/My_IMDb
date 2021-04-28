@@ -11,29 +11,22 @@ export class PersonService {
   ) {}
 
   async findEveryone(): Promise<Person[]> {
-    const everyone = await this.personModel.find().exec();
-
-    return everyone;
+    return this.personModel.find().exec();
   }
 
   async findPersonByID(id: IDType | ObjectId): Promise<Person> {
-    const person = await this.personModel.findById(id).exec();
-
-    return person;
+    return this.personModel.findById(id).exec();
   }
 
   async findPersonByName(name: string): Promise<Person> {
-    const person = await this.personModel.findOne({ name }).exec();
-
-    return person;
+    return this.personModel.findOne({ name }).exec();
   }
 
   async findPeopleWithIDs(personIDs: IDType[] | ObjectId[]): Promise<Person[]> {
     // Currently, there is an issue with Typescript on the .map() method
     // with union or array types (see: https://github.com/microsoft/TypeScript/issues/36390)
     // The workaround is to cast the array of IDs to 'any[]' to use .map()
-
-    const people = await this.personModel
+    return this.personModel
       .find({ _id: { $in: personIDs } })
       .exec()
       .then((unorderedPeople) =>
@@ -41,7 +34,5 @@ export class PersonService {
           unorderedPeople.find((person) => person.id === String(id)),
         ),
       );
-
-    return people;
   }
 }

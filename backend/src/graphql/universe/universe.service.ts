@@ -11,21 +11,15 @@ export class UniverseService {
   ) {}
 
   async findAllUniverses(): Promise<Universe[]> {
-    const universes = await this.universeModel.find().exec();
-
-    return universes;
+    return this.universeModel.find().exec();
   }
 
   async findUniverseByID(id: IDType | ObjectId): Promise<Universe> {
-    const universe = await this.universeModel.findById(id).exec();
-
-    return universe;
+    return this.universeModel.findById(id).exec();
   }
 
   async findUniverseByName(name: string): Promise<Universe> {
-    const universe = await this.universeModel.findOne({ name }).exec();
-
-    return universe;
+    return this.universeModel.findOne({ name }).exec();
   }
 
   async findUniversesWithIDs(
@@ -34,8 +28,7 @@ export class UniverseService {
     // Currently, there is an issue with Typescript on the .map() method
     // with union or array types (see: https://github.com/microsoft/TypeScript/issues/36390)
     // The workaround is to cast the array of IDs to 'any[]' to use .map()
-
-    const universes = await this.universeModel
+    return this.universeModel
       .find({ _id: { $in: universeIDs } })
       .exec()
       .then((unorderedUniverses) =>
@@ -43,7 +36,5 @@ export class UniverseService {
           unorderedUniverses.find((universe) => universe.id === String(id)),
         ),
       );
-
-    return universes;
   }
 }
