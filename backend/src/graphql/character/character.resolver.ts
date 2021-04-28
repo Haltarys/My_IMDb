@@ -22,26 +22,26 @@ export class CharacterResolver {
   async featuredIn(@Parent() character: CharacterEntity) {
     const { featuredIn: roleIDs } = character;
 
-    return this.roleService.findRolesWithIDs(roleIDs);
+    return this.roleService.findByMultipleIDs(roleIDs);
   }
 
   @Query((returns) => [Character])
   async getAllCharacters() {
-    return this.characterService.findAllCharacters();
+    return this.characterService.findAll();
   }
 
   @Query((returns) => Character, { nullable: true })
   async getCharacterByID(@Args('id', { type: () => ID }) id: string) {
-    return this.characterService.findCharacterByID(id);
+    return this.characterService.findByID(id);
   }
 
   @Query((returns) => Character, { nullable: true })
   async getCharacterByName(@Args('name') name: string) {
-    return this.characterService.findCharacterByName(name);
+    return this.characterService.findByName(name);
   }
 
   @Query((returns) => [Character], { nullable: 'items' })
   async getCharactersWithIDs(@Args('ids', { type: () => [ID] }) ids: string[]) {
-    return this.characterService.findCharactersWithIDs(ids);
+    return this.characterService.findByMultipleIDs(ids);
   }
 }

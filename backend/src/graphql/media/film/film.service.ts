@@ -7,19 +7,19 @@ import { Film, FilmDocument } from './film.entity';
 export class FilmService {
   constructor(@InjectModel(Film.name) private filmModel: Model<FilmDocument>) {}
 
-  async findAllFilms(): Promise<Film[]> {
+  async findAll(): Promise<Film[]> {
     return this.filmModel.find().exec();
   }
 
-  async findFilmByID(id: string | ObjectId): Promise<Film> {
+  async findByID(id: string | ObjectId): Promise<Film> {
     return this.filmModel.findById(id).exec();
   }
 
-  async findFilmByTitle(title: string): Promise<Film> {
+  async findByTitle(title: string): Promise<Film> {
     return this.filmModel.findOne({ title }).exec();
   }
 
-  async findFilmsWithIDs(filmIDs: string[] | ObjectId[]): Promise<Film[]> {
+  async findByMultipleIDs(filmIDs: string[] | ObjectId[]): Promise<Film[]> {
     // Currently, there is an issue with Typescript on the .map() method
     // with union or array types (see: https://github.com/microsoft/TypeScript/issues/36390)
     // The workaround is to cast the array of IDs to 'any[]' to use .map()

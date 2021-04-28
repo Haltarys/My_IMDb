@@ -22,26 +22,26 @@ export class UniverseResolver {
   async films(@Parent() universe: UniverseEntity) {
     const { films: filmIDs } = universe;
 
-    return this.filmService.findFilmsWithIDs(filmIDs);
+    return this.filmService.findByMultipleIDs(filmIDs);
   }
 
   @Query((returns) => [Universe])
   async getAllUniverses() {
-    return this.universeService.findAllUniverses();
+    return this.universeService.findAll();
   }
 
   @Query((returns) => Universe, { nullable: true })
   async getUniverseByID(@Args('id', { type: () => ID }) id: string) {
-    return this.universeService.findUniverseByID(id);
+    return this.universeService.findByID(id);
   }
 
   @Query((returns) => Universe, { nullable: true })
   async getUniverseByName(@Args('name') name: string) {
-    return this.universeService.findUniverseByName(name);
+    return this.universeService.findByName(name);
   }
 
   @Query((returns) => [Universe], { nullable: 'items' })
   async getUniversesWithIDs(@Args('ids', { type: () => [ID] }) ids: string[]) {
-    return this.universeService.findUniversesWithIDs(ids);
+    return this.universeService.findByMultipleIDs(ids);
   }
 }

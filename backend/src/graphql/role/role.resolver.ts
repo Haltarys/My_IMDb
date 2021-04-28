@@ -26,21 +26,21 @@ export class RoleResolver {
   async film(@Parent() role: RoleEntity) {
     const { film: filmID } = role;
 
-    return this.filmService.findFilmByID(filmID);
+    return this.filmService.findByID(filmID);
   }
 
   @ResolveField()
   async character(@Parent() role: RoleEntity) {
     const { character: characterID } = role;
 
-    return this.characterService.findCharacterByID(characterID);
+    return this.characterService.findByID(characterID);
   }
 
   @ResolveField()
   playedBy(@Parent() role: RoleEntity) {
     const { playedBy: actorIDs } = role;
 
-    return this.personService.findPeopleWithIDs(actorIDs);
+    return this.personService.findByMultipleIDs(actorIDs);
   }
 
   @ResolveField()
@@ -54,16 +54,16 @@ export class RoleResolver {
 
   @Query((returns) => [Role])
   async getAllRoles() {
-    return this.roleService.findAllRoles();
+    return this.roleService.findAll();
   }
 
   @Query((returns) => Role, { nullable: true })
   async getRoleByID(@Args('id', { type: () => ID }) id: string) {
-    return this.roleService.findRoleByID(id);
+    return this.roleService.findByID(id);
   }
 
   @Query((returns) => [Role], { nullable: 'items' })
   async getRolesWithIDs(@Args('ids', { type: () => [ID] }) ids: string[]) {
-    return this.roleService.findRolesWithIDs(ids);
+    return this.roleService.findByMultipleIDs(ids);
   }
 }

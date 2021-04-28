@@ -9,19 +9,19 @@ export class UniverseService {
     @InjectModel(Universe.name) private universeModel: Model<UniverseDocument>,
   ) {}
 
-  async findAllUniverses(): Promise<Universe[]> {
+  async findAll(): Promise<Universe[]> {
     return this.universeModel.find().exec();
   }
 
-  async findUniverseByID(id: string | ObjectId): Promise<Universe> {
+  async findByID(id: string | ObjectId): Promise<Universe> {
     return this.universeModel.findById(id).exec();
   }
 
-  async findUniverseByName(name: string): Promise<Universe> {
+  async findByName(name: string): Promise<Universe> {
     return this.universeModel.findOne({ name }).exec();
   }
 
-  async findUniversesWithIDs(
+  async findByMultipleIDs(
     universeIDs: string[] | ObjectId[],
   ): Promise<Universe[]> {
     // Currently, there is an issue with Typescript on the .map() method

@@ -7,15 +7,15 @@ import { Role, RoleDocument } from './role.entity';
 export class RoleService {
   constructor(@InjectModel(Role.name) private roleModel: Model<RoleDocument>) {}
 
-  async findAllRoles(): Promise<Role[]> {
+  async findAll(): Promise<Role[]> {
     return this.roleModel.find().exec();
   }
 
-  async findRoleByID(id: string | ObjectId): Promise<Role> {
+  async findByID(id: string | ObjectId): Promise<Role> {
     return this.roleModel.findById(id).exec();
   }
 
-  async findRolesWithIDs(roleIDs: string[] | ObjectId[]): Promise<Role[]> {
+  async findByMultipleIDs(roleIDs: string[] | ObjectId[]): Promise<Role[]> {
     // Currently, there is an issue with Typescript on the .map() method
     // with union or array types (see: https://github.com/microsoft/TypeScript/issues/36390)
     // The workaround is to cast the array of IDs to 'any[]' to use .map()

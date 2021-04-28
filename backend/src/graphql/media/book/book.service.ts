@@ -7,19 +7,19 @@ import { Book, BookDocument } from './book.entity';
 export class BookService {
   constructor(@InjectModel(Book.name) private bookModel: Model<BookDocument>) {}
 
-  async findAllBooks(): Promise<Book[]> {
+  async findAll(): Promise<Book[]> {
     return this.bookModel.find().exec();
   }
 
-  async findBookByID(id: string | ObjectId): Promise<Book> {
+  async findByID(id: string | ObjectId): Promise<Book> {
     return this.bookModel.findById(id).exec();
   }
 
-  async findBookByTitle(title: string): Promise<Book> {
+  async findByTitle(title: string): Promise<Book> {
     return this.bookModel.findOne({ title }).exec();
   }
 
-  async findBooksWithIDs(bookIDs: string[] | ObjectId[]): Promise<Book[]> {
+  async findByMultipleIDs(bookIDs: string[] | ObjectId[]): Promise<Book[]> {
     // Currently, there is an issue with Typescript on the .map() method
     // with union or array types (see: https://github.com/microsoft/TypeScript/issues/36390)
     // The workaround is to cast the array of IDs to 'any[]' to use .map()

@@ -10,19 +10,19 @@ export class CharacterService {
     private characterModel: Model<CharacterDocument>,
   ) {}
 
-  async findAllCharacters(): Promise<Character[]> {
+  async findAll(): Promise<Character[]> {
     return this.characterModel.find().exec();
   }
 
-  async findCharacterByID(id: string | ObjectId): Promise<Character> {
+  async findByID(id: string | ObjectId): Promise<Character> {
     return this.characterModel.findById(id).exec();
   }
 
-  async findCharacterByName(name: string): Promise<Character> {
+  async findByName(name: string): Promise<Character> {
     return this.characterModel.findOne({ name }).exec();
   }
 
-  async findCharactersWithIDs(
+  async findByMultipleIDs(
     characterIDs: string[] | ObjectId[],
   ): Promise<Character[]> {
     // Currently, there is an issue with Typescript on the .map() method
