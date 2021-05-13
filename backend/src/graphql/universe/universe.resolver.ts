@@ -7,10 +7,10 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { Universe } from './universe.type';
-import { Universe as UniverseEntity } from './universe.entity';
-import { Film as FilmEntity } from '../media/film/film.entity';
 import { UniverseService } from './universe.service';
 import { FilmService } from '../media/film/film.service';
+import { Universe as UniverseEntity } from './universe.entity';
+import { Film as FilmEntity } from '../media/film/film.entity';
 
 @Resolver((of) => Universe)
 export class UniverseResolver {

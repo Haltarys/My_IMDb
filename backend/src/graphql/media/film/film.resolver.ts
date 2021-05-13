@@ -7,16 +7,16 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { Film } from './film.type';
-import { Film as FilmEntity } from './film.entity';
-import { Book as BookEntity } from '../book/book.entity';
-import { Person as PersonEntity } from 'src/graphql/person/person.entity';
-import { Role as RoleEntity } from 'src/graphql/role/role.entity';
-import { Universe as UniverseEntity } from 'src/graphql/universe/universe.entity';
 import { FilmService } from './film.service';
 import { BookService } from '../book/book.service';
 import { PersonService } from 'src/graphql/person/person.service';
 import { RoleService } from 'src/graphql/role/role.service';
 import { UniverseService } from 'src/graphql/universe/universe.service';
+import { Film as FilmEntity } from './film.entity';
+import { Book as BookEntity } from '../book/book.entity';
+import { Person as PersonEntity } from 'src/graphql/person/person.entity';
+import { Role as RoleEntity } from 'src/graphql/role/role.entity';
+import { Universe as UniverseEntity } from 'src/graphql/universe/universe.entity';
 
 @Resolver((of) => Film)
 export class FilmResolver {

@@ -7,14 +7,14 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { Person } from './person.type';
-import { Person as PersonEntity } from './person.entity';
-import { Film as FilmEntity } from '../media/film/film.entity';
-import { Role as RoleEntity } from '../role/role.entity';
-import { Book as BookEntity } from '../media/book/book.entity';
 import { PersonService } from './person.service';
 import { FilmService } from '../media/film/film.service';
 import { RoleService } from '../role/role.service';
 import { BookService } from '../media/book/book.service';
+import { Person as PersonEntity } from './person.entity';
+import { Film as FilmEntity } from '../media/film/film.entity';
+import { Role as RoleEntity } from '../role/role.entity';
+import { Book as BookEntity } from '../media/book/book.entity';
 
 @Resolver((of) => Person)
 export class PersonResolver {

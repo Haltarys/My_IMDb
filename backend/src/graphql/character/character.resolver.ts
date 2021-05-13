@@ -7,10 +7,10 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { Character } from './character.type';
-import { Character as CharacterEntity } from './character.entity';
-import { Role as RoleEntity } from '../role/role.entity';
 import { CharacterService } from './character.service';
 import { RoleService } from '../role/role.service';
+import { Character as CharacterEntity } from './character.entity';
+import { Role as RoleEntity } from '../role/role.entity';
 
 @Resolver((of) => Character)
 export class CharacterResolver {
