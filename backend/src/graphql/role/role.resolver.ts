@@ -45,7 +45,7 @@ export class RoleResolver {
 
   @ResolveField()
   async voicedBy(
-    @Parent() role,
+    @Parent() role: RoleEntity,
     @Args('language', { nullable: true }) language: string,
     @Args('singing', { defaultValue: false }) singing: boolean,
   ) {
