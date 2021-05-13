@@ -24,23 +24,17 @@ export class RoleResolver {
 
   @ResolveField()
   async film(@Parent() role: RoleEntity) {
-    const { film: filmID } = role;
-
-    return this.filmService.findByID(filmID);
+    return this.filmService.findByID(role.film);
   }
 
   @ResolveField()
   async character(@Parent() role: RoleEntity) {
-    const { character: characterID } = role;
-
-    return this.characterService.findByID(characterID);
+    return this.characterService.findByID(role.character);
   }
 
   @ResolveField()
   playedBy(@Parent() role: RoleEntity) {
-    const { playedBy: actorIDs } = role;
-
-    return this.personService.findByMultipleIDs(actorIDs);
+    return this.personService.findByMultipleIDs(role.playedBy);
   }
 
   @ResolveField()

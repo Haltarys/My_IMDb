@@ -24,30 +24,22 @@ export class PersonResolver {
 
   @ResolveField()
   async directed(@Parent() person: PersonEntity) {
-    const { directed: filmIDs } = person;
-
-    return this.filmService.findByMultipleIDs(filmIDs);
+    return this.filmService.findByMultipleIDs(person.directed);
   }
 
   @ResolveField()
   async composedFor(@Parent() person: PersonEntity) {
-    const { composedFor: filmIDs } = person;
-
-    return this.filmService.findByMultipleIDs(filmIDs);
+    return this.filmService.findByMultipleIDs(person.composedFor);
   }
 
   @ResolveField()
   async playedIn(@Parent() person: PersonEntity) {
-    const { playedIn: roleIDs } = person;
-
-    return this.roleService.findByMultipleIDs(roleIDs);
+    return this.roleService.findByMultipleIDs(person.playedIn);
   }
 
   @ResolveField()
   async booksWritten(@Parent() person: PersonEntity) {
-    const { booksWritten: bookIDs } = person;
-
-    return this.bookService.findByMultipleIDs(bookIDs);
+    return this.bookService.findByMultipleIDs(person.booksWritten);
   }
 
   @Query((returns) => [Person])

@@ -26,10 +26,8 @@ export class FilmResolver {
 
   @ResolveField()
   async basedOnTrueFacts(@Parent() film: FilmEntity) {
-    const { basedOnTrueFacts } = film;
-
     // return false if null or undefined
-    return basedOnTrueFacts || false;
+    return film.basedOnTrueFacts || false;
   }
 
   @ResolveField()

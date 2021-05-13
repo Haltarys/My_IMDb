@@ -20,9 +20,7 @@ export class UniverseResolver {
 
   @ResolveField()
   async films(@Parent() universe: UniverseEntity) {
-    const { films: filmIDs } = universe;
-
-    return this.filmService.findByMultipleIDs(filmIDs);
+    return this.filmService.findByMultipleIDs(universe.films);
   }
 
   @Query((returns) => [Universe])

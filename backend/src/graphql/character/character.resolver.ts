@@ -20,9 +20,7 @@ export class CharacterResolver {
 
   @ResolveField()
   async featuredIn(@Parent() character: CharacterEntity) {
-    const { featuredIn: roleIDs } = character;
-
-    return this.roleService.findByMultipleIDs(roleIDs);
+    return this.roleService.findByMultipleIDs(character.featuredIn);
   }
 
   @Query((returns) => [Character])

@@ -29,9 +29,7 @@ export class BookResolver {
 
   @ResolveField()
   async adaptations(@Parent() book: BookEntity) {
-    const { adaptations: filmIDs } = book;
-
-    return this.filmService.findByMultipleIDs(filmIDs);
+    return this.filmService.findByMultipleIDs(book.adaptations);
   }
 
   @Query((returns) => [Book])
