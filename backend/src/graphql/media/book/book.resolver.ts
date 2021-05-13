@@ -8,6 +8,8 @@ import {
 } from '@nestjs/graphql';
 import { Book } from './book.type';
 import { Book as BookEntity } from './book.entity';
+import { Person as PersonEntity } from 'src/graphql/person/person.entity';
+import { Film as FilmEntity } from '../film/film.entity';
 import { BookService } from './book.service';
 import { PersonService } from 'src/graphql/person/person.service';
 import { FilmService } from '../film/film.service';
@@ -21,34 +23,38 @@ export class BookResolver {
   ) {}
 
   @ResolveField()
-  async author(@Parent() book: BookEntity) {
+  async author(@Parent() book: BookEntity): Promise<PersonEntity> {
     const { author: authorID } = book;
 
     return authorID ? this.personService.findByID(authorID) : null;
   }
 
   @ResolveField()
-  async adaptations(@Parent() book: BookEntity) {
+  async adaptations(@Parent() book: BookEntity): Promise<FilmEntity[]> {
     return this.filmService.findByMultipleIDs(book.adaptations);
   }
 
   @Query((returns) => [Book])
-  async getAllBooks() {
+  async getAllBooks(): Promise<BookEntity[]> {
     return this.bookService.findAll();
   }
 
   @Query((returns) => Book, { nullable: true })
-  async getBookByID(@Args('id', { type: () => ID }) id: string) {
+  async getBookByID(
+    @Args('id', { type: () => ID }) id: string,
+  ): Promise<BookEntity> {
     return this.bookService.findByID(id);
   }
 
   @Query((returns) => Book, { nullable: true })
-  async getBookByTitle(@Args('title') title: string) {
+  async getBookByTitle(@Args('title') title: string): Promise<BookEntity> {
     return this.bookService.findByTitle(title);
   }
 
   @Query((returns) => [Book], { nullable: 'items' })
-  async getBooksWithIDs(@Args('ids', { type: () => [ID] }) ids: string[]) {
+  async getBooksWithIDs(
+    @Args('ids', { type: () => [ID] }) ids: string[],
+  ): Promise<BookEntity[]> {
     return this.bookService.findByMultipleIDs(ids);
   }
 }

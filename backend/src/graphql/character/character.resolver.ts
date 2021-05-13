@@ -8,6 +8,7 @@ import {
 } from '@nestjs/graphql';
 import { Character } from './character.type';
 import { Character as CharacterEntity } from './character.entity';
+import { Role as RoleEntity } from '../role/role.entity';
 import { CharacterService } from './character.service';
 import { RoleService } from '../role/role.service';
 
@@ -19,27 +20,35 @@ export class CharacterResolver {
   ) {}
 
   @ResolveField()
-  async featuredIn(@Parent() character: CharacterEntity) {
+  async featuredIn(
+    @Parent() character: CharacterEntity,
+  ): Promise<RoleEntity[]> {
     return this.roleService.findByMultipleIDs(character.featuredIn);
   }
 
   @Query((returns) => [Character])
-  async getAllCharacters() {
+  async getAllCharacters(): Promise<CharacterEntity[]> {
     return this.characterService.findAll();
   }
 
   @Query((returns) => Character, { nullable: true })
-  async getCharacterByID(@Args('id', { type: () => ID }) id: string) {
+  async getCharacterByID(
+    @Args('id', { type: () => ID }) id: string,
+  ): Promise<CharacterEntity> {
     return this.characterService.findByID(id);
   }
 
   @Query((returns) => Character, { nullable: true })
-  async getCharacterByName(@Args('name') name: string) {
+  async getCharacterByName(
+    @Args('name') name: string,
+  ): Promise<CharacterEntity> {
     return this.characterService.findByName(name);
   }
 
   @Query((returns) => [Character], { nullable: 'items' })
-  async getCharactersWithIDs(@Args('ids', { type: () => [ID] }) ids: string[]) {
+  async getCharactersWithIDs(
+    @Args('ids', { type: () => [ID] }) ids: string[],
+  ): Promise<CharacterEntity[]> {
     return this.characterService.findByMultipleIDs(ids);
   }
 }
