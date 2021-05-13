@@ -2,14 +2,15 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 import { join } from 'path';
-import { MyImdbModule } from './graphql/my-imdb.module';
-import { AppController } from './app.controller';
 import {
   DB_URL,
   DB_NAME,
   DB_ADMIN_USER,
   DB_ADMIN_PASSWORD,
 } from './config/config';
+import { MyImdbModule } from './graphql/my-imdb.module';
+import { ImageModule } from './image/image.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import {
       w: 'majority',
     }),
     MyImdbModule,
+    ImageModule,
   ],
   controllers: [AppController],
 })
