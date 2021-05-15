@@ -1,14 +1,14 @@
 import { reduce, map } from 'lodash';
 
 export function mapOrder(objects: any[], ids: any[], key = 'id'): any[] {
-  const indexObject = reduce(
+  const index = reduce(
     objects,
-    (result, currentObject) => {
-      result[currentObject[key]] = currentObject;
-      return result;
+    (acc, current) => {
+      acc[current[key]] = current;
+      return acc;
     },
     {},
   );
 
-  return map(ids, (currentGUID) => indexObject[currentGUID]);
+  return map(ids, (id) => index[id]);
 }
