@@ -15,7 +15,7 @@ export class CharacterService {
     return this.characterModel.find().exec();
   }
 
-  async findByID(id: string | ObjectId): Promise<Character> {
+  async findById(id: string | ObjectId): Promise<Character> {
     return this.characterModel.findById(id).exec();
   }
 
@@ -23,14 +23,10 @@ export class CharacterService {
     return this.characterModel.findOne({ name }).exec();
   }
 
-  async findByMultipleIDs(
-    characterIDs: string[] | ObjectId[],
-  ): Promise<Character[]> {
+  async findByMultipleIds(ids: string[] | ObjectId[]): Promise<Character[]> {
     return this.characterModel
-      .find({ _id: { $in: characterIDs } })
+      .find({ _id: { $in: ids } })
       .exec()
-      .then((unorderedCharacters) =>
-        mapOrder(unorderedCharacters, characterIDs),
-      );
+      .then((unorderedCharacters) => mapOrder(unorderedCharacters, ids));
   }
 }

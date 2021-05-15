@@ -14,7 +14,7 @@ export class UniverseService {
     return this.universeModel.find().exec();
   }
 
-  async findByID(id: string | ObjectId): Promise<Universe> {
+  async findById(id: string | ObjectId): Promise<Universe> {
     return this.universeModel.findById(id).exec();
   }
 
@@ -22,12 +22,10 @@ export class UniverseService {
     return this.universeModel.findOne({ name }).exec();
   }
 
-  async findByMultipleIDs(
-    universeIDs: string[] | ObjectId[],
-  ): Promise<Universe[]> {
+  async findByMultipleIds(ids: string[] | ObjectId[]): Promise<Universe[]> {
     return this.universeModel
-      .find({ _id: { $in: universeIDs } })
+      .find({ _id: { $in: ids } })
       .exec()
-      .then((unorderedUniverses) => mapOrder(unorderedUniverses, universeIDs));
+      .then((unorderedUniverses) => mapOrder(unorderedUniverses, ids));
   }
 }

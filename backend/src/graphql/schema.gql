@@ -78,26 +78,26 @@ type Book implements IMedia {
 
 type Query {
   getAllBooks: [Book!]!
-  getBookByID(id: ID!): Book
+  getBookById(id: ID!): Book
   getBookByTitle(title: String!): Book
-  getBooksWithIDs(ids: [ID!]!): [Book]!
+  getBooksWithIds(ids: [ID!]!): [Book]!
   getAllFilms: [Film!]!
-  getFilmByID(id: ID!): Film
+  getFilmById(id: ID!): Film
   getFilmByTitle(title: String!): Film
-  getFilmsWithIDs(ids: [ID!]!): [Film]!
+  getFilmsWithIds(ids: [ID!]!): [Film]!
   getEveryone: [Person!]!
-  getPersonByID(id: ID!): Person
+  getPersonById(id: ID!): Person
   getPersonByName(name: String!): Person
-  getPeopleWithIDs(ids: [ID!]!): [Person]!
+  getPeopleWithIds(ids: [ID!]!): [Person]!
   getAllUniverses: [Universe!]!
-  getUniverseByID(id: ID!): Universe
+  getUniverseById(id: ID!): Universe
   getUniverseByName(name: String!): Universe
-  getUniversesWithIDs(ids: [ID!]!): [Universe]!
+  getUniversesWithIds(ids: [ID!]!): [Universe]!
   getAllRoles: [Role!]!
-  getRoleByID(id: ID!): Role
-  getRolesWithIDs(ids: [ID!]!): [Role]!
+  getRoleById(id: ID!): Role
+  getRolesWithIds(ids: [ID!]!): [Role]!
   getAllCharacters: [Character!]!
-  getCharacterByID(id: ID!): Character
+  getCharacterById(id: ID!): Character
   getCharacterByName(name: String!): Character
-  getCharactersWithIDs(ids: [ID!]!): [Character]!
+  getCharactersWithIds(ids: [ID!]!): [Character]!
 }

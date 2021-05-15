@@ -12,14 +12,14 @@ export class RoleService {
     return this.roleModel.find().exec();
   }
 
-  async findByID(id: string | ObjectId): Promise<Role> {
+  async findById(id: string | ObjectId): Promise<Role> {
     return this.roleModel.findById(id).exec();
   }
 
-  async findByMultipleIDs(roleIDs: string[] | ObjectId[]): Promise<Role[]> {
+  async findByMultipleIds(ids: string[] | ObjectId[]): Promise<Role[]> {
     return this.roleModel
-      .find({ _id: { $in: roleIDs } })
+      .find({ _id: { $in: ids } })
       .exec()
-      .then((unorderedRoles) => mapOrder(unorderedRoles, roleIDs));
+      .then((unorderedRoles) => mapOrder(unorderedRoles, ids));
   }
 }

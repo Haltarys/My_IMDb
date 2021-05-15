@@ -12,7 +12,7 @@ export class FilmService {
     return this.filmModel.find().exec();
   }
 
-  async findByID(id: string | ObjectId): Promise<Film> {
+  async findById(id: string | ObjectId): Promise<Film> {
     return this.filmModel.findById(id).exec();
   }
 
@@ -20,10 +20,10 @@ export class FilmService {
     return this.filmModel.findOne({ title }).exec();
   }
 
-  async findByMultipleIDs(filmIDs: string[] | ObjectId[]): Promise<Film[]> {
+  async findByMultipleIds(ids: string[] | ObjectId[]): Promise<Film[]> {
     return this.filmModel
-      .find({ _id: { $in: filmIDs } })
+      .find({ _id: { $in: ids } })
       .exec()
-      .then((unorderedFilms) => mapOrder(unorderedFilms, filmIDs));
+      .then((unorderedFilms) => mapOrder(unorderedFilms, ids));
   }
 }

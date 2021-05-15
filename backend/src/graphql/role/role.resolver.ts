@@ -27,17 +27,17 @@ export class RoleResolver {
 
   @ResolveField()
   async film(@Parent() role: RoleEntity): Promise<FilmEntity> {
-    return this.filmService.findByID(role.film);
+    return this.filmService.findById(role.film);
   }
 
   @ResolveField()
   async character(@Parent() role: RoleEntity): Promise<CharacterEntity> {
-    return this.characterService.findByID(role.character);
+    return this.characterService.findById(role.character);
   }
 
   @ResolveField()
   playedBy(@Parent() role: RoleEntity): Promise<PersonEntity[]> {
-    return this.personService.findByMultipleIDs(role.playedBy);
+    return this.personService.findByMultipleIds(role.playedBy);
   }
 
   @ResolveField()
@@ -55,16 +55,16 @@ export class RoleResolver {
   }
 
   @Query((returns) => Role, { nullable: true })
-  async getRoleByID(
+  async getRoleById(
     @Args('id', { type: () => ID }) id: string,
   ): Promise<RoleEntity> {
-    return this.roleService.findByID(id);
+    return this.roleService.findById(id);
   }
 
   @Query((returns) => [Role], { nullable: 'items' })
-  async getRolesWithIDs(
+  async getRolesWithIds(
     @Args('ids', { type: () => [ID] }) ids: string[],
   ): Promise<RoleEntity[]> {
-    return this.roleService.findByMultipleIDs(ids);
+    return this.roleService.findByMultipleIds(ids);
   }
 }

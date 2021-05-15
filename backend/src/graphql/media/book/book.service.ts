@@ -12,7 +12,7 @@ export class BookService {
     return this.bookModel.find().exec();
   }
 
-  async findByID(id: string | ObjectId): Promise<Book> {
+  async findById(id: string | ObjectId): Promise<Book> {
     return this.bookModel.findById(id).exec();
   }
 
@@ -20,10 +20,10 @@ export class BookService {
     return this.bookModel.findOne({ title }).exec();
   }
 
-  async findByMultipleIDs(bookIDs: string[] | ObjectId[]): Promise<Book[]> {
+  async findByMultipleIds(ids: string[] | ObjectId[]): Promise<Book[]> {
     return this.bookModel
-      .find({ _id: { $in: bookIDs } })
+      .find({ _id: { $in: ids } })
       .exec()
-      .then((unorderedBooks) => mapOrder(unorderedBooks, bookIDs));
+      .then((unorderedBooks) => mapOrder(unorderedBooks, ids));
   }
 }

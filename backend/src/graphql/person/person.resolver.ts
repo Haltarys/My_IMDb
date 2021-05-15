@@ -27,22 +27,22 @@ export class PersonResolver {
 
   @ResolveField()
   async directed(@Parent() person: PersonEntity): Promise<FilmEntity[]> {
-    return this.filmService.findByMultipleIDs(person.directed);
+    return this.filmService.findByMultipleIds(person.directed);
   }
 
   @ResolveField()
   async composedFor(@Parent() person: PersonEntity): Promise<FilmEntity[]> {
-    return this.filmService.findByMultipleIDs(person.composedFor);
+    return this.filmService.findByMultipleIds(person.composedFor);
   }
 
   @ResolveField()
   async playedIn(@Parent() person: PersonEntity): Promise<RoleEntity[]> {
-    return this.roleService.findByMultipleIDs(person.playedIn);
+    return this.roleService.findByMultipleIds(person.playedIn);
   }
 
   @ResolveField()
   async booksWritten(@Parent() person: PersonEntity): Promise<BookEntity[]> {
-    return this.bookService.findByMultipleIDs(person.booksWritten);
+    return this.bookService.findByMultipleIds(person.booksWritten);
   }
 
   @Query((returns) => [Person])
@@ -51,10 +51,10 @@ export class PersonResolver {
   }
 
   @Query((returns) => Person, { nullable: true })
-  async getPersonByID(
+  async getPersonById(
     @Args('id', { type: () => ID }) id: string,
   ): Promise<PersonEntity> {
-    return this.personService.findByID(id);
+    return this.personService.findById(id);
   }
 
   @Query((returns) => Person, { nullable: true })
@@ -63,9 +63,9 @@ export class PersonResolver {
   }
 
   @Query((returns) => [Person], { nullable: 'items' })
-  async getPeopleWithIDs(
+  async getPeopleWithIds(
     @Args('ids', { type: () => [ID] }) ids: string[],
   ): Promise<PersonEntity[]> {
-    return this.personService.findByMultipleIDs(ids);
+    return this.personService.findByMultipleIds(ids);
   }
 }

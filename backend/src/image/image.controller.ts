@@ -31,7 +31,7 @@ export class ImageController {
 
     if (film) return film;
     throw new BadRequestException(
-      `Error: no document with ID ${params.id} found in '${params.category}'.`,
+      `Error: no document with id ${params.id} found in '${params.category}'.`,
     );
   }
 }

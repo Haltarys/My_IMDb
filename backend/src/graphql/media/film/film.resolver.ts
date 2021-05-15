@@ -36,51 +36,51 @@ export class FilmResolver {
 
   @ResolveField()
   async basedOnBook(@Parent() film: FilmEntity): Promise<BookEntity> {
-    const { basedOnBook: bookID } = film;
+    const { basedOnBook: bookId } = film;
 
-    return bookID ? this.bookService.findByID(bookID) : null;
+    return bookId ? this.bookService.findById(bookId) : null;
   }
 
   @ResolveField()
   async directedBy(@Parent() film: FilmEntity): Promise<PersonEntity[]> {
-    const { directedBy: directorIDs } = film;
+    const { directedBy: directorIds } = film;
 
-    return this.personService.findByMultipleIDs(directorIDs);
+    return this.personService.findByMultipleIds(directorIds);
   }
 
   @ResolveField()
   async musicBy(@Parent() film: FilmEntity): Promise<PersonEntity[]> {
-    const { musicBy: musicComposerIDs } = film;
+    const { musicBy: musicComposerIds } = film;
 
-    return this.personService.findByMultipleIDs(musicComposerIDs);
+    return this.personService.findByMultipleIds(musicComposerIds);
   }
 
   @ResolveField()
   cast(@Parent() film: FilmEntity): Promise<RoleEntity[]> {
-    const { cast: roleIDs } = film;
+    const { cast: roleIds } = film;
 
-    return this.roleService.findByMultipleIDs(roleIDs);
+    return this.roleService.findByMultipleIds(roleIds);
   }
 
   @ResolveField()
   async previous(@Parent() film: FilmEntity): Promise<FilmEntity> {
-    const { previous: previousFilmID } = film;
+    const { previous: previousFilmId } = film;
 
-    return previousFilmID ? this.filmService.findByID(previousFilmID) : null;
+    return previousFilmId ? this.filmService.findById(previousFilmId) : null;
   }
 
   @ResolveField()
   async sequel(@Parent() film: FilmEntity): Promise<FilmEntity> {
-    const { sequel: sequelID } = film;
+    const { sequel: sequelId } = film;
 
-    return sequelID ? this.filmService.findByID(sequelID) : null;
+    return sequelId ? this.filmService.findById(sequelId) : null;
   }
 
   @ResolveField()
   async cinematicUniverse(@Parent() film: FilmEntity): Promise<UniverseEntity> {
-    const { cinematicUniverse: universeID } = film;
+    const { cinematicUniverse: universeId } = film;
 
-    return universeID ? this.universeService.findByID(universeID) : null;
+    return universeId ? this.universeService.findById(universeId) : null;
   }
 
   @Query((returns) => [Film])
@@ -89,8 +89,8 @@ export class FilmResolver {
   }
 
   @Query((returns) => Film, { nullable: true })
-  getFilmByID(@Args('id', { type: () => ID }) id: string): Promise<FilmEntity> {
-    return this.filmService.findByID(id);
+  getFilmById(@Args('id', { type: () => ID }) id: string): Promise<FilmEntity> {
+    return this.filmService.findById(id);
   }
 
   @Query((returns) => Film, { nullable: true })
@@ -99,9 +99,9 @@ export class FilmResolver {
   }
 
   @Query((returns) => [Film], { nullable: 'items' })
-  getFilmsWithIDs(
+  getFilmsWithIds(
     @Args('ids', { type: () => [ID] }) ids: string[],
   ): Promise<FilmEntity[]> {
-    return this.filmService.findByMultipleIDs(ids);
+    return this.filmService.findByMultipleIds(ids);
   }
 }

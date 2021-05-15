@@ -21,7 +21,7 @@ export class UniverseResolver {
 
   @ResolveField()
   async films(@Parent() universe: UniverseEntity): Promise<FilmEntity[]> {
-    return this.filmService.findByMultipleIDs(universe.films);
+    return this.filmService.findByMultipleIds(universe.films);
   }
 
   @Query((returns) => [Universe])
@@ -30,10 +30,10 @@ export class UniverseResolver {
   }
 
   @Query((returns) => Universe, { nullable: true })
-  async getUniverseByID(
+  async getUniverseById(
     @Args('id', { type: () => ID }) id: string,
   ): Promise<UniverseEntity> {
-    return this.universeService.findByID(id);
+    return this.universeService.findById(id);
   }
 
   @Query((returns) => Universe, { nullable: true })
@@ -42,9 +42,9 @@ export class UniverseResolver {
   }
 
   @Query((returns) => [Universe], { nullable: 'items' })
-  async getUniversesWithIDs(
+  async getUniversesWithIds(
     @Args('ids', { type: () => [ID] }) ids: string[],
   ): Promise<UniverseEntity[]> {
-    return this.universeService.findByMultipleIDs(ids);
+    return this.universeService.findByMultipleIds(ids);
   }
 }

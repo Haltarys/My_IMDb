@@ -23,7 +23,7 @@ export class CharacterResolver {
   async featuredIn(
     @Parent() character: CharacterEntity,
   ): Promise<RoleEntity[]> {
-    return this.roleService.findByMultipleIDs(character.featuredIn);
+    return this.roleService.findByMultipleIds(character.featuredIn);
   }
 
   @Query((returns) => [Character])
@@ -32,10 +32,10 @@ export class CharacterResolver {
   }
 
   @Query((returns) => Character, { nullable: true })
-  async getCharacterByID(
+  async getCharacterById(
     @Args('id', { type: () => ID }) id: string,
   ): Promise<CharacterEntity> {
-    return this.characterService.findByID(id);
+    return this.characterService.findById(id);
   }
 
   @Query((returns) => Character, { nullable: true })
@@ -46,9 +46,9 @@ export class CharacterResolver {
   }
 
   @Query((returns) => [Character], { nullable: 'items' })
-  async getCharactersWithIDs(
+  async getCharactersWithIds(
     @Args('ids', { type: () => [ID] }) ids: string[],
   ): Promise<CharacterEntity[]> {
-    return this.characterService.findByMultipleIDs(ids);
+    return this.characterService.findByMultipleIds(ids);
   }
 }

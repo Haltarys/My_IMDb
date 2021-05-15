@@ -14,7 +14,7 @@ export class PersonService {
     return this.personModel.find().exec();
   }
 
-  async findByID(id: string | ObjectId): Promise<Person> {
+  async findById(id: string | ObjectId): Promise<Person> {
     return this.personModel.findById(id).exec();
   }
 
@@ -22,10 +22,10 @@ export class PersonService {
     return this.personModel.findOne({ name }).exec();
   }
 
-  async findByMultipleIDs(peopleIDs: string[] | ObjectId[]): Promise<Person[]> {
+  async findByMultipleIds(ids: string[] | ObjectId[]): Promise<Person[]> {
     return this.personModel
-      .find({ _id: { $in: peopleIDs } })
+      .find({ _id: { $in: ids } })
       .exec()
-      .then((unorderedPeople) => mapOrder(unorderedPeople, peopleIDs));
+      .then((unorderedPeople) => mapOrder(unorderedPeople, ids));
   }
 }

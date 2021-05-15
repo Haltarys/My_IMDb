@@ -24,14 +24,14 @@ export class BookResolver {
 
   @ResolveField()
   async author(@Parent() book: BookEntity): Promise<PersonEntity> {
-    const { author: authorID } = book;
+    const { author: authorId } = book;
 
-    return authorID ? this.personService.findByID(authorID) : null;
+    return authorId ? this.personService.findById(authorId) : null;
   }
 
   @ResolveField()
   async adaptations(@Parent() book: BookEntity): Promise<FilmEntity[]> {
-    return this.filmService.findByMultipleIDs(book.adaptations);
+    return this.filmService.findByMultipleIds(book.adaptations);
   }
 
   @Query((returns) => [Book])
@@ -40,10 +40,10 @@ export class BookResolver {
   }
 
   @Query((returns) => Book, { nullable: true })
-  async getBookByID(
+  async getBookById(
     @Args('id', { type: () => ID }) id: string,
   ): Promise<BookEntity> {
-    return this.bookService.findByID(id);
+    return this.bookService.findById(id);
   }
 
   @Query((returns) => Book, { nullable: true })
@@ -52,9 +52,9 @@ export class BookResolver {
   }
 
   @Query((returns) => [Book], { nullable: 'items' })
-  async getBooksWithIDs(
+  async getBooksWithIds(
     @Args('ids', { type: () => [ID] }) ids: string[],
   ): Promise<BookEntity[]> {
-    return this.bookService.findByMultipleIDs(ids);
+    return this.bookService.findByMultipleIds(ids);
   }
 }
