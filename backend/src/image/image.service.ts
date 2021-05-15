@@ -95,7 +95,7 @@ export class ImageService {
       .then((count: number) => count === 1);
   }
 
-  async upsertImage(
+  async upsertImageInDocument(
     id: string | ObjectId,
     type: ImageName,
     url: string,
@@ -103,6 +103,16 @@ export class ImageService {
   ): Promise<Film> {
     return (model as any)
       .findByIdAndUpdate(id, { [type]: url }, { new: true })
+      .exec();
+  }
+
+  async deleteImageInDocument(
+    id: string | ObjectId,
+    type: ImageName,
+    model: ImageModel,
+  ): Promise<Film> {
+    return (model as any)
+      .findByIdAndUpdate(id, { $unset: { [type]: 1 } }, { new: true })
       .exec();
   }
 
@@ -117,6 +127,16 @@ export class ImageService {
     if (!filmExists) return null;
 
     const url = await this.saveImageOnDisk(params, file);
-    return this.upsertImage(params.id, params.name, url, model);
+    return this.upsertImageInDocument(params.id, params.name, url, model);
+  }
+
+  async deleteImage(params: ImageUploadParams): Promise<Film> {
+    const model = this.selectModelByCategory(params.category);
+    if (!model) return null;
+
+    const filmExists = await this.documentExists(params.id, model);
+    if (!filmExists) return null;
+
+    return this.deleteImageInDocument(params.id, params.name, model);
   }
 }

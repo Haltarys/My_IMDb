@@ -1,6 +1,7 @@
 import {
   BadRequestException,
   Controller,
+  Delete,
   Param,
   Post,
   UploadedFile,
@@ -23,11 +24,24 @@ export class ImageController {
   @Post(':category/:id/:name')
   @UsePipes(ValidationPipe)
   @UseInterceptors(FileInterceptor('file'), ValidImageInterceptor)
-  async uploadFile(
+  async uploadImage(
     @Param() params: ImageUploadParams,
     @UploadedFile() file: Express.Multer.File,
   ): Promise<Person | Film | Universe> {
     const film = await this.imageService.uploadImage(params, file);
+
+    if (film) return film;
+    throw new BadRequestException(
+      `Error: no document with id ${params.id} found in '${params.category}'.`,
+    );
+  }
+
+  @Delete(':category/:id/:name')
+  @UsePipes(ValidationPipe)
+  async deleteImage(
+    @Param() params: ImageUploadParams,
+  ): Promise<Person | Film | Universe> {
+    const film = await this.imageService.deleteImage(params);
 
     if (film) return film;
     throw new BadRequestException(
