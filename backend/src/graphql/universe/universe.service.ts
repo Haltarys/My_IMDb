@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId } from 'mongoose';
+import { mapOrder } from 'src/utils/mapOrder';
 import { Universe, UniverseDocument } from './universe.entity';
 
 @Injectable()
@@ -24,16 +25,9 @@ export class UniverseService {
   async findByMultipleIDs(
     universeIDs: string[] | ObjectId[],
   ): Promise<Universe[]> {
-    // Currently, there is an issue with Typescript on the .map() method
-    // with union or array types (see: https://github.com/microsoft/TypeScript/issues/36390)
-    // The workaround is to cast the array of IDs to 'any[]' to use .map()
     return this.universeModel
       .find({ _id: { $in: universeIDs } })
       .exec()
-      .then((unorderedUniverses) =>
-        (universeIDs as any[]).map((id) =>
-          unorderedUniverses.find((universe) => universe.id === String(id)),
-        ),
-      );
+      .then((unorderedUniverses) => mapOrder(unorderedUniverses, universeIDs));
   }
 }
