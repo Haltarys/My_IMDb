@@ -25,6 +25,7 @@ import { AppController } from './app.controller';
       },
       retryWrites: true,
       w: 'majority',
+      useFindAndModify: false,
     }),
     MyImdbModule,
     ImageModule,
