@@ -30,7 +30,7 @@ export class FilmResolver {
 
   @ResolveField()
   async basedOnTrueFacts(@Parent() film: FilmEntity): Promise<boolean> {
-    // return false if null or undefined
+    // return false if not present on document
     return film.basedOnTrueFacts || false;
   }
 
