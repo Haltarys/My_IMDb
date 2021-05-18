@@ -1,46 +1,39 @@
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Grid } from '@material-ui/core';
+import { auth } from '@/firebase/firebase';
 import FilmList from '@/components/FilmList';
-import { Film } from '@/film';
-
-const data: Film[] = [
-  {
-    id: 'afac2',
-    uid: 'me',
-    title: 'The Dark Knight',
-    seen: true,
-    createdAt: new Date(Date.now()),
-  },
-  {
-    id: 'afad5',
-    uid: 'me',
-    title: 'Batman begins',
-    seen: true,
-    createdAt: new Date(Date.now()),
-  },
-  {
-    id: 'bb5c4',
-    uid: 'me',
-    title: 'Ava',
-    seen: true,
-    createdAt: new Date(Date.now()),
-  },
-  {
-    id: 'b33c4',
-    uid: 'me',
-    title: 'Braveheart',
-    seen: false,
-    createdAt: new Date(Date.now()),
-  },
-  {
-    id: 'cd1e8',
-    uid: 'me',
-    title: 'The Lord of the Rings: Return of the King',
-    seen: true,
-    createdAt: new Date(Date.now()),
-  },
-];
+import FilmForm from '@/components/FilmForm';
+import SignIn from '@/components/SignIn';
+import SignOut from '@/components/SignOut';
 
 const Home = () => {
-  return <FilmList films={data} />;
+  const [user] = useAuthState(auth);
+
+  return (
+    <Grid
+      container
+      direction="column"
+      spacing={3}
+      alignItems="center"
+      justify="center"
+    >
+      {user ? (
+        <>
+          <Grid item>
+            <SignOut />
+          </Grid>
+          <Grid item>
+            <FilmList />
+          </Grid>
+          <Grid item>
+            <FilmForm />
+          </Grid>
+        </>
+      ) : (
+        <SignIn />
+      )}
+    </Grid>
+  );
 };
 
 export default Home;
