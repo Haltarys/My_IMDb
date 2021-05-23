@@ -40,8 +40,11 @@ const FilmItem = ({ film }: FilmItemProps) => {
           gridTemplateColumns: '1fr auto',
         }}
       >
-        <Box bgcolor={film.seen ? 'primary.light' : grey.A100}>
-          <ButtonBase component="div" onClick={handleSeen}>
+        <ButtonBase component="div" onClick={handleSeen}>
+          <Box
+            bgcolor={film.seen ? 'primary.light' : grey.A100}
+            style={{ width: '100%' }}
+          >
             <CardHeader
               title={
                 <Typography variant="h4" component="h4">
@@ -64,8 +67,8 @@ const FilmItem = ({ film }: FilmItemProps) => {
                 </Tooltip>
               </Fab>
             </CardContent>
-          </ButtonBase>
-        </Box>
+          </Box>
+        </ButtonBase>
       </Card>
     </Grid>
   );
