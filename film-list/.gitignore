@@ -11,8 +11,8 @@
 # next.js
 /.next/
 /out/
-sw.js
-workbox*.js
+sw.js*
+workbox*.js*
 
 # production
 /build
