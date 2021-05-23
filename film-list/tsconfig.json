@@ -20,7 +20,7 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     "jsx": "preserve",
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]
     }

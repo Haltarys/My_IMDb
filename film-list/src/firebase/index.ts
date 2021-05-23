@@ -16,4 +16,10 @@ if (!firebase.apps.length) {
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
-export { firebase, auth, firestore };
+const signInWithGoogle = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+
+  auth.signInWithPopup(provider).catch((err) => {});
+};
+
+export { firebase, auth, firestore, signInWithGoogle };

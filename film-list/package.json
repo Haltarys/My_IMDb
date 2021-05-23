@@ -5,22 +5,25 @@
   "scripts": {
     "dev": "next dev -p 8002",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 8002"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
-    "clsx": "^1.1.1",
     "firebase": "^8.6.1",
-    "next": "10.2.0",
+    "next": "10.2.2",
+    "next-pwa": "^5.2.21",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-firebase-hooks": "^3.0.4"
+    "react-firebase-hooks": "^3.0.4",
+    "react-masonry-css": "^1.0.16"
   },
   "devDependencies": {
+    "@svgr/webpack": "^5.5.0",
     "@types/node": "^15.3.0",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.5",
+    "@types/svgr__rollup": "^4.3.0",
     "typescript": "^4.2.4"
   }
 }

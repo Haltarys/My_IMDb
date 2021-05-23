@@ -7,7 +7,7 @@ import Document, {
   DocumentContext,
 } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
-import theme from '../theme/theme';
+import theme from '@/theme/theme';
 
 export default class MyDocument extends Document {
   // `getInitialProps` belongs to `_document` (instead of `_app`),

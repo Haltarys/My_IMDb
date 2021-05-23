@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '@/theme/theme';
+import '@/styles/globals.css';
 
 const MyApp = (props: AppProps) => {
   const { Component, pageProps } = props;
@@ -28,7 +29,18 @@ const MyApp = (props: AppProps) => {
           name="description"
           content="A list of film that I intend to watch some day (and add to My IMDb)."
         />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="keywords" content="film, list, myimdb" />
+
+        <link rel="manifest" href="/manifest.json" />
+        <link
+          href="/icons/icon-72x72.png"
+          rel="icon"
+          type="image/png"
+          sizes="72x72"
+        />
+        <link rel="apple-touch-icon" href="/icons/icon-128x128.png"></link>
+
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
