@@ -24,6 +24,8 @@
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.5",
     "@types/svgr__rollup": "^4.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
     "typescript": "^4.2.4"
   }
 }
