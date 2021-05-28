@@ -6,12 +6,11 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import Fab from '@material-ui/core/Fab';
 import Grid from '@material-ui/core/Grid';
-import Switch from '@material-ui/core/Switch';
 import Tooltip from '@material-ui/core/Tooltip';
 import Delete from '@material-ui/icons/Delete';
 import useTheme from '@material-ui/core/styles/useTheme';
 import grey from '@material-ui/core/colors/grey';
-import { Film } from '@/film';
+import { Film } from '@/types/film';
 import { firestore } from '@/firebase';
 
 interface FilmItemProps {
@@ -37,38 +36,32 @@ const FilmItem = ({ film }: FilmItemProps) => {
         elevation={6}
         style={{
           display: 'grid',
-          gridTemplateColumns: '1fr auto',
         }}
       >
-        <ButtonBase component="div" onClick={handleSeen}>
-          <Box
-            bgcolor={film.seen ? 'primary.light' : grey.A100}
-            style={{ width: '100%' }}
-          >
-            <CardHeader
-              title={
-                <Typography variant="h4" component="h4">
-                  {film.title}
-                </Typography>
-              }
-              subheader={film.seen ? 'Seen' : 'Not seen'}
-            />
-            <CardContent>
-              <Tooltip title={`Mark as ${film.seen ? 'not ' : ''}seen`}>
-                <Switch
-                  checked={film.seen}
-                  color="primary"
-                  onChange={handleSeen}
-                />
-              </Tooltip>
-              <Fab color="primary" onClick={handleDelete}>
-                <Tooltip title="Delete this film">
-                  <Delete />
-                </Tooltip>
-              </Fab>
-            </CardContent>
-          </Box>
-        </ButtonBase>
+        <Tooltip title={`Mark as ${film.seen ? 'not ' : ''}seen`}>
+          <ButtonBase component="div" onClick={handleSeen}>
+            <Box
+              bgcolor={film.seen ? 'primary.light' : grey.A100}
+              style={{ width: '100%' }}
+            >
+              <CardHeader
+                title={
+                  <Typography variant="h4" component="h4">
+                    {film.title}
+                  </Typography>
+                }
+                subheader={film.seen ? 'Seen' : 'Not seen'}
+              />
+              <CardContent>
+                <Fab color="primary" onClick={handleDelete}>
+                  <Tooltip title="Delete this film">
+                    <Delete />
+                  </Tooltip>
+                </Fab>
+              </CardContent>
+            </Box>
+          </ButtonBase>
+        </Tooltip>
       </Card>
     </Grid>
   );
