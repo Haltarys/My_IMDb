@@ -47,6 +47,7 @@ const AddFilmForm = ({ onSubmit }: AddFilmFormProps) => {
             label="Film title"
             variant="outlined"
             required
+            autoFocus
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
