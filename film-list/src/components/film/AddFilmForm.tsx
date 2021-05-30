@@ -44,7 +44,7 @@ const AddFilmForm = ({ onSubmit }: AddFilmFormProps) => {
         >
           <TextField
             id="film-seen"
-            label="Film seen"
+            label="Film title"
             variant="outlined"
             required
             value={title}
