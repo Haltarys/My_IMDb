@@ -1,7 +1,7 @@
-version: '3.5'
+version: "3.5"
 
 services:
-  backend:
+  film-list:
     build: ./film-list
     restart: unless-stopped
     ports:
