@@ -1,0 +1,10 @@
+version: '3.5'
+
+services:
+  backend:
+    build: ./film-list
+    restart: unless-stopped
+    ports:
+      - 8002:3000
+    volumes:
+      - ./film-list:/app
